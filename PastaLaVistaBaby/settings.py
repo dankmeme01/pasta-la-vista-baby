@@ -20,12 +20,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-d@74!&tqrpc)0%ui^)ni@c@ea@c*)3__@efdyj%=e=amg1hkh0'
+
+with open(BASE_DIR / 'PastaLaVistaBaby' / 'secrets.txt') as f:
+    lines = f.readlines()
+
+SECRET_KEY = lines[0].partition('####')[0].strip()
+MYSQL_USER = lines[1].partition('####')[0].strip()
+MYSQL_PASSWORD = lines[2].partition('####')[0].strip()
+MYSQL_DBNAME = lines[3].partition('####')[0].strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'WebsiteApp.apps.WebsiteappConfig',
 ]
 
 MIDDLEWARE = [
@@ -73,10 +81,23 @@ WSGI_APPLICATION = 'PastaLaVistaBaby.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+# print(MYSQL_PASSWORD)
+# print(MYSQL_USER)
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': MYSQL_DBNAME,
+        'USER': MYSQL_USER,
+        'PASSWORD': MYSQL_PASSWORD,
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -116,6 +137,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'WebsiteApp' / 'static'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'WebsiteApp' / 'images'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
