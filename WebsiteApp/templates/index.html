@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/style.css">
-  <title>PastaLaVistaBaby</title>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <div class="header__row">
-        <div class="header__logo">PastaLaVistaBaby</div>
-      </div>
-    </div>
-  </header>
+{% extends "base.html" %}
 
+{% block title %}PastaLaVistaBaby{% endblock %}
+{% block content %}
+<h1>MAIN PAGE</h1>
+<section class="main__menu">
+  <a href="#">Перейти в меню</a>
+</section>
 
-</body>
-</html>
+<section>
+  <a href="#">Забронювати стіл</a>
+</section>
+
+<section>
+  <a href="#">Instagram</a>
+</section>
+{% endblock %}

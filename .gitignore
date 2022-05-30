@@ -1,4 +1,3 @@
 __pycache__
 ngrok.exe
-db.sqlite3
-secrets.txt
+# secrets.txt
