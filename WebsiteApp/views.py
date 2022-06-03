@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+
 from .models import FoodModel
 
 # Create your views here.
@@ -15,11 +16,9 @@ def about(request):
 
 
 def menu(request):
-    menu_obj = []
-    for ob in FoodModel.objects.all():
-        menu_obj.append(ob)
-
-    return render(request, 'menu.html', context={'menu': menu_obj})
+    ctx = {}
+    ctx['menu'] = FoodModel.objects.all()
+    return render(request, 'menu.html', context=ctx)
 
 
 def contact(request):

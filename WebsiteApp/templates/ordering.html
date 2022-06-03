@@ -1,6 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>ORDERING</h1>
+
+<form>
+  <label for="fname"> Ваше ім’я*</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  <label for="tel">Телефон*</label><br>
+  <input type="tel" name="tel" pattern="+380[0-9]{3}-[0-9]{3}">
+</form>
+<hr>
+<form>
+  <h2>Спосіб доставки</h2>
+    <input type="radio" id="Доставка" name="fav_language" value="Доставка">
+    <label for="html">Доставка</label><br>
+    <input type="radio" id="Самовивіз" name="fav_language" value="Самовивіз">
+    <label for="css">Самовивіз</label><br>
+
+    <label for="Адреса">Адреса*</label><br>
+    <input type="text" id="Адреса" name="Адреса"><br>
+  </form>
+<hr>
+
+<form>
+  <h2>Спосіб оплати</h2>
+    <input type="radio" id="Готівкою" name="fav_language" value="Готівкою">
+    <label for="html">Готівкою</label><br>
+    <input type="radio" id="Карткою" name="fav_language" value="Карткою">
+    <label for="css">Карткою</label><br>
+  </form>
+<hr>
+
 <a href="#" class="ordering">Замовити</a>
 <a href="#" class="instagram">Instagram</a>
 {% endblock %}

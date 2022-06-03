@@ -84,31 +84,31 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: inherit;
-}
+  }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-.container {
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-}
+  .container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
 
-.header__row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-.header__logo {
-  font-size: 50px;
-  padding-top: 30px;
-  color: #333;
-  font-weight: 700;
-  text-align: center;
-}
+  .header__row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .header__logo {
+    font-size: 50px;
+    padding-top: 30px;
+    color: #333;
+    font-weight: 700;
+    text-align: center;
+  }

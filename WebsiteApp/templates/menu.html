@@ -1,16 +1,35 @@
 {% extends "base.html" %}
-{% block content %}
-<h1>MENU</h1>
-{% for item in menu %}
-  <div>
-    <p>{{ item.title }}</p>
-    <p>{{ item.description }}</p>
-  </div>
-<hr>
-{% endfor %}
-<a href="#" class="instagram">Instagram</a>
+{% load static %}
 
-<h1>{{ title }}</h1>
+{% block static_files %}
+  <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+  <script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+  <h1>MENU</h1>
+
+  <section class="menu__section">
+    <div class="container">
+      <div class="menu">
+        {% for item in menu %}
+        <div class="menu__row">
+          <img class="item__image" src="{% get_static_prefix %}{{ item.image }}" alt= "{{ item.title }}">
+          <p class="item__title">{{ item.title }}</p>
+          <p class="item__description">{{ item.description }}</p>
+          <p class="item__price">{% widthratio item.price 100 1 %} грн</p>
+          <p class="item__weight">{{ item.weight }}</p>
+          <a class="item__button" href="javascript:menuItemClicked({{ item.id }})">Додати до кошикa</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <hr>
+  <a href="#" class="instagram">Instagram</a>
+
+  <h1>{{ title }}</h1>
 
 {% endblock %}
 
