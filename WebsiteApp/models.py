@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
+from django.forms import BooleanField, CharField, TimeField
 
 upload_storage = FileSystemStorage(
     location=settings.STATIC_ROOT, base_url='/static/')
