@@ -1,8 +1,10 @@
-function setCookie(cname, cvalue) {
-  document.cookie = cname + "=" + cvalue + ";path=/menu";
+let cachedFoodLookup;
+
+let setCookie = (cname, cvalue) => {
+  document.cookie = cname + "=" + cvalue + ";path=/";
 }
 
-function getCookie(cname) {
+let getCookie = (cname) => {
   let name = cname + "=";
   let ca = document.cookie.split(';');
   for (let i = 0; i < ca.length; i++) {
@@ -17,7 +19,42 @@ function getCookie(cname) {
   return "";
 }
 
-function menuItemClicked(id) {
+let foodElemBuilder = (food, id) => {
+  let listEntry = $(`<li class='cart__item'></li>`);
+  let paraTag = $(`<span>${food.title} (${food.price} грн.) </span>`);
+  let button = $(`<a href="javascript:menuRemove(${id})"><ion-icon name="trash" class="cart__remove"></ion-icon></a>`);
+  listEntry.append(paraTag);
+  listEntry.append(button);
+  return listEntry;
+}
+
+let updateCart = () => {
+  let cookie = getCookie("menu");
+  if (cookie.length <= 0) {
+    $(".cart").hide();
+  }
+  else {
+    $(".cart").show();
+    let cartbody = $(".cart__body");
+    cartbody.empty();
+    let items = cookie.split(",");
+    if (items.length == 1 && items[0] == "") {
+      $(".cart").hide();
+    }
+    else {
+      let price = 0;
+      for (let item in items) {
+        let foodItem = lookupFoodById(items[item]);
+        let itemElem = foodElemBuilder(foodItem, item);
+        cartbody.append(itemElem);
+        price += parseFloat(foodItem.price);
+      }
+      $(".cart__total").text(price);
+    }
+  }
+}
+
+let menuItemClicked = (id) => {
   let cookie = getCookie("menu");
   if (cookie.length <= 0) {
     setCookie("menu", id, 1);
@@ -30,7 +67,79 @@ function menuItemClicked(id) {
     items.push(id);
 
     cookie = items.join(",");
-    console.log(cookie);
     setCookie("menu", cookie, 1);
   }
+  updateCart();
+}
+
+let menuRemove = (id) => {
+  let cookie = getCookie("menu");
+  let items = cookie.split(",");
+  items.splice(id, 1);
+  cookie = items.join(",");
+  setCookie("menu", cookie, 1);
+  updateCart();
+}
+
+let menuRemoveAll = () => {
+  setCookie("menu", "", 1);
+  updateCart();
+}
+
+window.onload = async () => {
+  let errors = $(".form__errors");
+  let success = $(".form__success");
+  console.log(errors);
+  console.log(success);
+
+  if (success.length) {
+    Swal.fire({
+      title: 'Успех!',
+      text: 'Ваше замовлення прийнято!',
+      icon: 'success',
+      confirmButtonText: 'Ок'
+    })
+  }
+
+  else if (errors.length) {
+    Swal.fire({
+      title: 'Помилка!',
+      text: 'Виникла помилка при обробці замовлення!',
+      icon: 'error',
+      confirmButtonText: 'Ок'
+    })
+  }
+
+  lookupFood().then(data => {
+    cachedFoodLookup = data;
+    updateCart();
+  });
+}
+
+let lookupFood = () => {
+  let baseAddress = document.location.origin;
+  let url = baseAddress + "/food_json";
+
+  return new Promise(resolve => {
+    $.ajax({
+      url: url,
+      type: "GET",
+      dataType: "json",
+      success: (data) => {
+        resolve(data);
+      },
+      error: (data) => {
+        console.error(data);
+      }
+    });
+  });
+}
+
+let lookupFoodById = (id) => {
+  if (!cachedFoodLookup) {
+    lookupFood().then(data => {
+      cachedFoodLookup = data;
+    });
+  }
+  return cachedFoodLookup[id];
 }

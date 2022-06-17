@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/base.css">
   <title>{% block title %}Base template{% endblock %}</title>
 </head>
 <body>
@@ -18,6 +19,28 @@
     </nav>
   </header>
 
+  <!-- <div class="wrapper">
+    <header class="header">
+      <div class="header__container __container">
+        <a href="#" class="header__logo">
+          <img src="" alt="">
+        </a>
+
+        <nav class="header__nav nav">
+          <ul class="nav__list">
+            <li class="nav__item">Про нас</li>
+            <li class="nav__item">Меню</li>
+            <li class="nav__item">Контакти</li>
+            <li class="nav__item">Резерв столу</li>
+          </ul>
+        </nav>
+
+        <a href="#" class="header__phone"></a>
+        <a href="#" class="header__cart"></a>
+      </div>
+    </header>
+  </div> -->
+
   <div id="content">
     <main>
       {% block content %}
@@ -27,6 +50,7 @@
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   {% block static_files %}{% endblock %}
 </body>
 </html>

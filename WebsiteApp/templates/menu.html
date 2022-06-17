@@ -1,37 +1,122 @@
 {% extends "base.html" %}
 {% load static %}
+{% load extra_tags %}
 
 {% block static_files %}
   <link rel="stylesheet" href="{% static 'css/menu.css' %}">
   <script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 {% endblock %}
 
 {% block title %}Меню{% endblock %}
 
 {% block content %}
 
-  <h1>MENU</h1>
+<h1>MENU</h1>
 
-  <section class="menu__section">
-    <div class="container">
-      <div class="menu">
-        {% for item in menu %}
-        <div class="menu__row">
-          <img class="item__image" src="{% get_static_prefix %}{{ item.image }}" alt= "{{ item.title }}">
-          <p class="item__title">{{ item.title }}</p>
-          <p class="item__description">{{ item.description }}</p>
-          <p class="item__price">{% widthratio item.price 100 1 %} грн</p>
-          <p class="item__weight">{{ item.weight }}</p>
-          <a class="item__button" href="javascript:menuItemClicked({{ item.id }})">Додати до кошикa</a>
-        </div>
-        {% endfor %}
+<section class="menu__section">
+  <div class="container">
+    <div class="menu">
+      {% for item in menu %}
+      <div class="menu__row">
+        <img class="item__image" src="{% get_static_prefix %}{{ item.image }}" alt= "{{ item.title }}">
+        <p class="item__title">{{ item.title }}</p>
+        <p class="item__description">{{ item.description }}</p>
+        <p class="item__price">{{ item.price }} грн</p>
+        <p class="item__weight">{{ item.weight }}</p>
+        <a class="item__button" href="javascript:menuItemClicked({{ item.id }})">Додати до кошикa</a>
       </div>
+      {% endfor %}
     </div>
-  </section>
-  <hr>
-  <a href="#" class="instagram">Instagram</a>
 
-  <h1>{{ title }}</h1>
+    <div class="menu__confirm">
+      <form action="{% url 'order_place' %}" method="POST" onsubmit="madeOrder()">
+        {% csrf_token %}
+        <label>Ваше ім'я:</label>
+        <input type="text" id="full_name" name="full_name">
+
+        <br>
+
+        <label>Номер телефону:</label>
+        <input type="text" id="phone_number" name="phone_number">
+
+        <br>
+
+        <label>Тип доставки:</label>
+
+        <select id="delivery_type" name="delivery_type">
+          <option value="1">Самовивіз</option>
+          <option value="2">Доставка на вулицю</option>
+        </select>
+
+        <br>
+
+        <label>Адреса доставки:</label>
+        <input type="text" id="delivery_address" name="delivery_address">
+
+        <br>
+
+        <label>Тип оплати:</label>
+        <select id="payment_type" name="payment_type">
+          <option value="1">Нал</option>
+          <option value="2">Картка</option>
+        </select>
+
+        <br>
+
+        <label>К-сть приборiв:</label>
+        <input type="number" name="amount_of_tools" id="amount_of_tools" min="0" max="50">
+
+        <br>
+
+        <label>Коментар:</label>
+        <input type="text" id="comment" name="comment">
+
+        <br>
+
+        <input type="submit" value="Замовити">
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="cart">
+  <div class="container">
+    <div class="cart__header">
+      <h2>Корзина</h2>
+    </div>
+    <button class="cart__delete" onclick="menuRemoveAll()">удалить ВСЁ!</button>
+
+    <ul class="cart__body"></ul>
+    <p>Всього: <span class="cart__total">0</span> грн</p>
+  </div>
+</section>
+
+<!-- There has to be a better way. -->
+{% if form %}
+{% if form.errors %}
+  <section class="form__errors" style="display: none">
+  {% for field, error in form.errors|dict_items %}
+    <div class="form__error">
+      <p>{{ field }}</p>
+      {{ error }}
+    </div>
+  {% endfor %}
+  </section>
+{% endif %}
+{% endif %}
+
+{% if success %}
+<section class="form__success" style="display: none"></section>
+{% endif %}
+
+<hr>
+
+
+<a href="#" class="instagram">Instagram</a>
+
+<h1>{{ title }}</h1>
 
 {% endblock %}
 

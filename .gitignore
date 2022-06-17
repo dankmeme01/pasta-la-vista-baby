@@ -1,4 +1,4 @@
 __pycache__
 ngrok.exe
 secrets.txt
-migrations
+# migrations

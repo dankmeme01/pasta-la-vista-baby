@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Order management{% endblock %}
+{% load extra_tags %}
+
+{% block content %}
+<h1>Order management</h1>
+
+{% for order in orders %}
+<div class="order">
+    <p class="order__num">Order #{{ order.id }}</p>
+    <p class="order__name">Iм'я покупця: {{ order.full_name }}</p>
+    <p class="order__number">Номер телефону: {{ order.phone_number }}</p>
+    <p class="order__delivery_type">Тип доставки: {% if order.delivery_type == "1" %}доставка{% else %}самовивiз{% endif %}</p>
+    <p class="order__delivery_address">Адреса доставки: {{ order.delivery_address }}</p>
+    <p class="order__payment_type">Тип оплати: {% if order.payment_type == "1" %}нал{% else %}карта{% endif %}</p>
+    <p class="order__amount_of_tools">К-сть приборiв: {{ order.amount_of_tools }}</p>
+    <p>Коментар: {{ order.comment }}</p>
+    {% if order.payment_type == "1" %}
+    <p>До сплати: {{ order.total_cost }} грн.</p>
+    {% endif %}
+
+    <p class="order__info_items">Замовлення:</p>
+    <ul>
+    {% for item in order.food_id_list %}
+        <li>{{ food_lookup|hash:item }}</li>
+    {% endfor %}
+    </ul>
+
+    <form class="order__remove_form" action="{% url 'order_remove' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="order_id" value="{{ order.id }}">
+        <input type="submit" value="Видалити">
+    </form>
+</div>
+<br>
+{% endfor %}
+
+{% endblock %}
