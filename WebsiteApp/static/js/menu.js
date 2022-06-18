@@ -87,29 +87,6 @@ let menuRemoveAll = () => {
 }
 
 window.onload = async () => {
-  let errors = $(".form__errors");
-  let success = $(".form__success");
-  console.log(errors);
-  console.log(success);
-
-  if (success.length) {
-    Swal.fire({
-      title: 'Успех!',
-      text: 'Ваше замовлення прийнято!',
-      icon: 'success',
-      confirmButtonText: 'Ок'
-    })
-  }
-
-  else if (errors.length) {
-    Swal.fire({
-      title: 'Помилка!',
-      text: 'Виникла помилка при обробці замовлення!',
-      icon: 'error',
-      confirmButtonText: 'Ок'
-    })
-  }
-
   lookupFood().then(data => {
     cachedFoodLookup = data;
     updateCart();
@@ -143,3 +120,32 @@ let lookupFoodById = (id) => {
   }
   return cachedFoodLookup[id];
 }
+
+$("#place_order_form").submit(function (e) {
+  e.preventDefault();
+  $.ajax({
+    url: $(this).attr("action"),
+    type: "POST",
+    data: $(this).serialize(),
+    success: (data) => {
+      if (data.error) {
+        Swal.fire({
+          title: "Помилка",
+          text: data.message,
+          icon: "error",
+          confirmButtonText: "Ок"
+        });
+      }
+      else {
+        Swal.fire({
+          title: "Успіх",
+          text: data.message,
+          icon: "success",
+          confirmButtonText: "Ок"
+        });
+        $("#place_order_form").trigger("reset");
+        menuRemoveAll();
+      }
+    }
+  });
+});

@@ -58,6 +58,11 @@ def order_management(request):
 
 
 def order_place(request):
+    def respond(msg, error=False):
+        return HttpResponse(
+            json.dumps({'error': error, 'message': msg}),
+            content_type='application/json')
+
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -65,7 +70,7 @@ def order_place(request):
             food_ids = []
             menuc = request.COOKIES.get('menu')
             if not menuc:
-                return HttpResponse('no menu')
+                return respond('No menu cookie', True)
 
             for foodid in menuc.split(','):
                 food = FoodModel.objects.get(id=foodid)
@@ -79,13 +84,10 @@ def order_place(request):
 
             model.save()
             form.save_m2m()
-            rwebp = redirect('menu', success=True)
-            rwebp.set_cookie('menu', '', max_age=0)
-            return rwebp
+            return respond('Order placed successfully')
         else:
-            request.path = '/menu'
-            return menu(request, form=form, success=False)
-    return HttpResponse("wrong request bozo")
+            return respond('Invalid form', True)
+    return respond("wrong request bozo", True)
 
 
 @staff_member_required

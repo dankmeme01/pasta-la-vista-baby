@@ -31,7 +31,7 @@
     </div>
 
     <div class="menu__confirm">
-      <form action="{% url 'order_place' %}" method="POST" onsubmit="madeOrder()">
+      <form action="{% url 'order_place' %}" method="POST" id="place_order_form">
         {% csrf_token %}
         <label>Ваше ім'я:</label>
         <input type="text" id="full_name" name="full_name">
@@ -92,24 +92,6 @@
     <p>Всього: <span class="cart__total">0</span> грн</p>
   </div>
 </section>
-
-<!-- There has to be a better way. -->
-{% if form %}
-{% if form.errors %}
-  <section class="form__errors" style="display: none">
-  {% for field, error in form.errors|dict_items %}
-    <div class="form__error">
-      <p>{{ field }}</p>
-      {{ error }}
-    </div>
-  {% endfor %}
-  </section>
-{% endif %}
-{% endif %}
-
-{% if success %}
-<section class="form__success" style="display: none"></section>
-{% endif %}
 
 <hr>
 

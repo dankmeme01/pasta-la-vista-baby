@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Nunito:wght@300;500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16"  href="../img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="../css/main ver2.0.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+  <title>Main page</title>
+</head>
+<body>
+  <div class="wrapper">
+    
+    <header class="header">
+        <nav class="navbar">
+          <div class="navbar__container _container">
+            <div class="nav__wrap">
+              <a href="main ver2.0.html" class="Logo" id="Logo">
+                <img src="../img/header/logo.svg" alt="Logo">
+              </a>
+  
+              <ul class="menu" id="menu">
+                <li><a class = "menu__text" href="about.html">Про нас</a></li>
+                <li><a class = "menu__text" href="menu.html">Меню</a></li>
+                <li><a class = "menu__text" href="contacts.html">Контакти</a></li>
+                <li><a class = "menu__text" href="ordering.html">Резерв столу</a></li>
+              </ul>
+
+              <ul class="menu__items">
+                <a href="tel:+380631407000" class="menu__item">
+                  <img src="../img/header/Tel.svg" alt="Tel">
+                </a>
+
+                <a href="$" class="menu__item">
+                  <img src="../img/header/Cart.svg" alt="Cart(3)">
+                </a>
+              </ul>
+
+              <div class="hamb">
+                <div class="hamb__field" id="hamb">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div class="popup" id="popup"></div>
+    </header>
+
+    <main class="page">
+      
+      <section class="page__main-block main-block">
+        <div class="main-block__container _container">
+          <div class="main-block__body">
+            <div class="main-block__title">
+              <h1>Pasta La Vista, <span>baby!</span></h1>
+            </div>
+
+            <div class="main-block__text">
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do <br> amet sint. Velit officia consequat duis enim velit mollit.
+            </div>
+
+            <div class="main-block__button block-button">
+              <a href="menu.html">Перейти в меню</a>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="main-block__image _ibg">
+          <img src="" alt="">
+        </div> -->
+      </section>
+
+      <section class="page__our-menu our-menu">
+        <div class="our-menu__container _container">
+          <div class="our-menu__body">
+            <div class="our-menu__content">
+              <div class="our-menu__title header-block__title"><h2>Наше меню</h2></div>
+              <div class="our-menu__text header-block__subtitle">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. </div>
+              <div class="our-menu__button block-button">
+                <a href="menu.html">Перейти в меню</a>
+              </div>
+            </div>
+            <div class="our-menu__image">
+              <img src="../img/our-menu/PastaPhoto.jpg" alt="Menu Photo">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="image-slider swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="image-slider__wrapper swiper-wrapper">
+          <!-- Slides -->
+          <div class="image-slider__slide swiper-slide">
+            <div class="image-slider__image">
+              <img src="../img/slider/Slide 01.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="image-slider__slide swiper-slide">
+            <div class="image-slider__image">
+              <img src="../img/slider/Slide 02.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="image-slider__slide swiper-slide">
+            <div class="image-slider__image">
+              <img src="../img/slider/Slide 03.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="image-slider__slide swiper-slide">
+            <div class="image-slider__image">
+              <img src="../img/slider/Slide 04.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="image-slider__slide swiper-slide">
+            <div class="image-slider__image">
+              <img src="../img/slider/Slide 05.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="image-slider__slide swiper-slide">
+            <div class="image-slider__image">
+              <img src="../img/slider/Slide 06.jpg" alt="">
+            </div>
+          </div>
+
+          ...
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <!-- <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div> -->
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+      </div>
+
+      <section class="page__format format">
+        <div class="format__container _container">
+          <div class="format__header header-block">
+            <div class="header-block__title"><h2>Обирай свій формат</h2></div>
+          </div>
+
+          <div class="format__items">
+            <div class="format__item item-format item-format_first">
+              <div class="item-format__bg">
+                <img src="../img/format/FirstColumnImage.png" alt="BG">
+              </div>
+
+              <div class="item-format__title"><h3>Ресторан</h3></div>
+              <div class="item-format__text">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</div>
+              
+              <div class="item-format__button block-button block-button_small01">
+                <a href="contacts.html">Забронювати стіл</a>
+              </div>
+            </div>
+
+            <div class="format__item item-format item-format_second ">
+              <div class="item-format__bg">
+                <img src="../img/format/SecondColumnImage.png" alt="BG">
+              </div>
+              <div class="item-format__title"><h3>Доставка</h3></div>
+              <div class="item-format__text">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</div>
+              
+              <div class="item-format__button block-button block-button_small02">
+                <a href="menu.html">Перейти в меню</a>
+              </div>
+            </div>
+
+            <div class="format__item item-format item-format_third">
+              <div class="item-format__bg">
+                <img src="../img/format/ThirdColumnImage.png" alt="BG">
+              </div>
+              <div class="item-format__title"><h3>Самовивіз</h3></div>
+              <div class="item-format__text">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</div>
+              
+              <div class="item-format__button block-button block-button_small03">
+                <a href="menu.html">Перейти в меню</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page__instagram instagram">
+        <div class="instagram__container _container">
+          <div class="instagram__header header-block">
+            <div class="header-block__title"><h2>Ми в Instagram</h2></div>
+            <div class="header-block__subtitle">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</div>
+            <div class="header-block__button block-button block-button_center">
+              <a href="https://www.instagram.com/plv_baby/" target="_blank">Instagram</a>
+            </div>
+          </div>
+
+          <div class="Instagram__body">
+            <div class="Instagram__items">
+              <div class="Instagram__item Instagram__item_01">
+                <a href="https://www.instagram.com/p/CZWOf70AR3v/"  target="_blank" class = Instagram__publication>
+                  <img src="../img/instagram/Publication1.png" alt="Instagram Picture">
+                </a>
+                <a href="https://www.instagram.com/p/CZJzcgdI3qi/"  target="_blank"class = Instagram__publication>
+                  <img src="../img/instagram/Publication2.png" alt="Instagram Picture">
+                </a>
+              </div>
+
+              <div class="Instagram__item Instagram__item_02">
+                <a href="https://www.instagram.com/p/CZMQumTIuBl/"  target="_blank" class = Instagram__publication>
+                  <img src="../img/instagram/Publication3.png" alt="Instagram Picture">
+                </a>
+                <a href="https://www.instagram.com/p/CZokjSyAw01/" target="_blank" class = Instagram__publication>
+                  <img src="../img/instagram/Publication4.png" alt="Instagram Picture">
+                </a>
+              </div>  
+
+              <div class="Instagram__item Instagram__item_03">
+                <a href="https://www.instagram.com/p/CZB1J1PI2Nn/" target="_blank" class = Instagram__publication>
+                  <img src="../img/instagram/Publication5.png" alt="Instagram Picture">
+                </a>
+                <a href="https://www.instagram.com/p/CaPGkCSAKZT/" target="_blank" class = Instagram__publication>
+                  <img src="../img/instagram/Publication6.png" alt="Instagram Picture">
+                </a>
+              </div>
+
+              <div class="Instagram__item Instagram__item_04">
+                <a href="https://www.instagram.com/p/CenvuSEoTfm/" target="_blank"
+                class = Instagram__publication Instagram__publication_last>
+                  <img src="../img/instagram/Publication7.png" alt="Instagram Picture">
+                </a>
+                <a href="https://www.instagram.com/p/CXQYQg_Ivet/" target="_blank"
+                class = Instagram__publication Instagram__publication_last>
+                  <img src="../img/instagram/Publication8.png" alt="Instagram Picture">
+                </a>
+              </div>
+
+
+          </div>
+            
+        </div>
+      </section>
+
+      <section class="page__contacts contacts">
+        <div class="contacts__container _container">
+          <div class="instagram__header header-block">
+            <div class="header-block__title"><h2>Контакти</h2></div>
+          </div>
+
+          
+
+          <div class="contacts__body">
+            <div class="contacts__image">
+              <img src="../img/contacts/Image.jpg" alt="Image">
+            </div>
+
+            <div class="contacts__content">
+              <div class="contacts__address">
+                <a href="https://goo.gl/maps/1kpj7zJk7yCLYdei6" target="_blank">
+                  <img src="../img/contacts/icon_address.svg" alt="icon">
+                  Черкаси, Хрещатик 200
+                </a>
+              </div>
+              <div class="contacts__hours">Працюємо з 10:00 до 20:00</div>
+              <div class="contacts__ordering">Приймаємо замовлення за телефоном: <a href="tel:+380631407000">+380631407000</a> </div>
+              <div class="contacts__instagram">
+                <a href="https://www.instagram.com/plv_baby/" target="_blank">
+                  <img src="../img/contacts/icon_instagram.svg" alt="icon">
+                  Pasta la Vista, baby!
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer__container _container">
+          <div class="footer__content">
+            <div class="our-menu__text header-block__subtitle">Чекаємо на ваші відгуки та відмітки у соціальних мережах!</div>
+            
+            <div class="footer__items">
+              <div class="our-menu__button block-button block-button_footer">
+                <a href="https://www.instagram.com/plv_baby/" target="_blank">Instagram</a>
+              </div>
+
+              <img src="../img/footer/Arrow.svg" alt="Arrow">
+            </div>
+          </div>
+        </div>
+      </footer>
+  
+
+    </main>
+  </div>  
+
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="../js/script.js"></script>
+
+</body>
+</html>
