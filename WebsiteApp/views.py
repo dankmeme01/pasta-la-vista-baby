@@ -112,3 +112,7 @@ def food_json(request):
     }
     return HttpResponse(
         json.dumps(food_dict), content_type='application/json')
+
+
+def test(request):
+    return render(request, 'test.html')

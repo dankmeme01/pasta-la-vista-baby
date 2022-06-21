@@ -20,15 +20,16 @@ function renderPopup() {
   popup.appendChild(menu);
 }
 
-//! ========== SLIDER ==========
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
 
-new Swiper('.image-slider', {
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevtEl: '.swiper-button-prev'
-  },
-});
-
-
-
-
+let hideHash = () => {
+  setTimeout(() => {
+    history.pushState("/", document.title, window.location.pathname
+      + window.location.search);
+  }, 10);
+}

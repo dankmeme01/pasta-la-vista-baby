@@ -12,4 +12,5 @@ urlpatterns = [
     path('order_place/', views.order_place, name='order_place'),
     path('order_remove/', views.order_remove, name='order_remove'),
     path('food_json/', views.food_json, name='food_json'),
+    path('test/', views.test, name='test')
 ]

@@ -1,5 +1,95 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}About us{% endblock %}
+{% block static_files %}
+<link rel="stylesheet" href="{% static '/css/about.css' %}">
+{% endblock %}
+
 {% block content %}
-<h1>ABOUT</h1>
-<a href="https://instagram.com/plv_baby?igshid=YmMyMTA2M2Y= )" class="instagram">Instagram</a>
+<section class="about__us">
+  <div class="about__us__container _container">
+    <div class="about__us__header header-block">
+      <div class="about__us__titile header-block__title"><h2>Про нас</h2></div>
+    </div>
+    <div class="about__us__body">
+      <div class="about__us__image">
+        <img src="{% static '/images/about__us/Img01.jpg' %}" alt="">
+      </div>
+      <div class="about__us__content">
+        <div class="about__us__text">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+        </div>
+      </div>
+    </div>
+    <div class="about__us__body about__us__body_second">
+      <div class="about__us__image about__us__image_second">
+        <img src="{% static '/images/about__us/Img02.jpg' %}" alt="">
+      </div>
+      <div class="about__us__content about__us__content_second">
+        <div class="about__us__text about__us__text_second">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page__instagram instagram">
+  <div class="instagram__container _container">
+    <div class="instagram__header header-block">
+      <div class="header-block__title"><h2>Ми в Instagram</h2></div>
+      <div class="header-block__subtitle">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</div>
+      <div class="header-block__button block-button block-button_center">
+        <a href="https://www.instagram.com/plv_baby/" target="_blank">Instagram</a>
+      </div>
+    </div>
+
+    <div class="Instagram__body">
+      <div class="Instagram__items">
+        <div class="Instagram__item Instagram__item_01">
+          <a href="https://www.instagram.com/p/CZWOf70AR3v/"  target="_blank" class = Instagram__publication>
+            <img src="{% static '/images/instagram/Publication1.png' %}" alt="Instagram Picture">
+          </a>
+          <a href="https://www.instagram.com/p/CZJzcgdI3qi/"  target="_blank"class = Instagram__publication>
+            <img src="{% static '/images/instagram/Publication2.png' %}" alt="Instagram Picture">
+          </a>
+        </div>
+
+        <div class="Instagram__item Instagram__item_02">
+          <a href="https://www.instagram.com/p/CZMQumTIuBl/"  target="_blank" class = Instagram__publication>
+            <img src="{% static '/images/instagram/Publication3.png' %}" alt="Instagram Picture">
+          </a>
+          <a href="https://www.instagram.com/p/CZokjSyAw01/" target="_blank" class = Instagram__publication>
+            <img src="{% static '/images/instagram/Publication4.png' %}" alt="Instagram Picture">
+          </a>
+        </div>
+
+        <div class="Instagram__item Instagram__item_03">
+          <a href="https://www.instagram.com/p/CZB1J1PI2Nn/" target="_blank" class = Instagram__publication>
+            <img src="{% static '/images/instagram/Publication5.png' %}" alt="Instagram Picture">
+          </a>
+          <a href="https://www.instagram.com/p/CaPGkCSAKZT/" target="_blank" class = Instagram__publication>
+            <img src="{% static '/images/instagram/Publication6.png' %}" alt="Instagram Picture">
+          </a>
+        </div>
+
+        <div class="Instagram__item Instagram__item_04">
+          <a href="https://www.instagram.com/p/CenvuSEoTfm/" target="_blank"
+          class = Instagram__publication Instagram__publication_last>
+            <img src="{% static '/images/instagram/Publication7.png' %}" alt="Instagram Picture">
+          </a>
+          <a href="https://www.instagram.com/p/CXQYQg_Ivet/" target="_blank"
+          class = Instagram__publication Instagram__publication_last>
+            <img src="{% static '/images/instagram/Publication8.png' %}" alt="Instagram Picture">
+          </a>
+        </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
