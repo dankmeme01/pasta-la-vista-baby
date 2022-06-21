@@ -33,3 +33,8 @@ let hideHash = () => {
       + window.location.search);
   }, 10);
 }
+
+setTimeout(() => {
+  $(".popup__reservation").css("transition", "all 0.5s ease 0s");
+  $(".popup__cart").css("transition", "all 0.5s ease 0s");
+}, 100);

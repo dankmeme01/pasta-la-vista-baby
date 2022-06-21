@@ -10,12 +10,20 @@ upload_storage = FileSystemStorage(
 # Create your models here.
 
 
+class FoodCategory(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
 class FoodModel(models.Model):
     title = models.CharField(max_length=160)
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='images/food/', storage=upload_storage)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     weight = models.CharField(max_length=8)  # in grams
+    category = models.ForeignKey(FoodCategory, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

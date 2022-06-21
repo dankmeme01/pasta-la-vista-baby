@@ -4,7 +4,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 import json
 
-from .models import FoodModel, OrderModel, OrderForm
+from .models import FoodModel, OrderModel, OrderForm, FoodCategory
 
 # Create your views here.
 
@@ -18,8 +18,9 @@ def about(request):
     return render(request, 'about.html')
 
 
-def menu(request, form=None, success=None):
-    ctx = {'menu': FoodModel.objects.all(), 'form': form, 'success': success}
+def menu(request):
+    ctx = {'menu': FoodModel.objects.all(
+    ), 'categories': FoodCategory.objects.all()}
     return render(request, 'menu.html', context=ctx)
 
 
