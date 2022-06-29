@@ -4,41 +4,62 @@
 {% block title %}Menu{% endblock %}
 
 {% block static_files %}
-    <link rel="stylesheet" href="{% static '/css/menu.css' %}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="{% static '/css/menu.css' %}">
+  <script src="{% static '/js/menu.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-{% include "slider.html" %}
+{% include "base/slider_menu.html" %}
 <section class="menu__page menu1">
   <div class="menu1__container _container">
     <div class="menu1__classes">
+      <a href="javascript:void(0)" onclick="selectCategory('all')">
+        <div class="menu1__class menu1__class_selected menu1__class_all">
+          Усі
+        </div>
+      </a>
       {% for cat in categories %}
-        <div class="menu1__class{% if forloop.first %} menu1__class_selected{% endif %}" id="category-selector-{{ cat.id }}">
+      <a href="javascript:void(0)" onclick="selectCategory('{{ cat.id }}')">
+        <div class="menu1__class" id="category-selector-{{ cat.id }}">
           {{ cat.name }}
         </div>
+      </a>
       {% endfor %}
     </div>
 
     <div class="menu1__items">
-      {% for item in menu %}
-        <div class="menu1__item item-menu food-category-{{ item.category.id }}">
-          <div class="item-menu__image">
-            <img src="{% get_static_prefix %}{{ item.image }}" alt="{{ item.title }}">
-            <div class="item-menu__image__weight">{{ item.weight }}г</div>
-          </div>
-          <div class="item-menu__content">
-            <div class="item-menu__title">{{ item.title }}</div>
-            <div class="item-menu__text">{{ item.description }}</div>
-            <div class="item-menu__price">
-              <div class="item-menu__price__text">{{ item.price }} грн</div>
-              <div class="item-menu__price__cart">
-                <img src="{% static '/images/menu/Cart_Icon.svg' %}" alt="">
+      {% for cat in categories %}
+        <div class="menu1__category_items" id="category-{{ cat.id }}">
+          <div class="menu1__category_title"><h1>{{ cat.name }}</h1></div>
+          {% for item in cat.foodmodel_set.all %}
+            {% if item.in_stock %}
+            <div class="menu1__item__column">
+              <div class="menu1__item item-menu food-category-{{ item.category.id }}">
+                <div class="item-menu__image">
+                  <img src="{% get_static_prefix %}{{ item.image }}" alt="{{ item.title }}">
+                  <div class="item-menu__image__weight">{{ item.weight }}</div>
+                </div>
+                <div class="item-menu__content">
+                  <div class="item-menu__title">{{ item.title }}</div>
+                  <div class="item-menu__text">{{ item.description }}</div>
+                  <div class="item-menu__price">
+                    <div class="item-menu__price__text">{{ item.price }} грн</div>
+                    <div class="item-menu__price__cart">
+                      <a href="javascript:menuItemClicked({{ item.id }})">
+                        <img src="{% static '/images/menu/Cart_Icon.svg' %}" alt="">
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            {% endif %}
+          {% endfor %}
           </div>
         </div>
       {% endfor %}
+      <div class="menu1__item menu1__empty">
+        <p>Поки що тут пустовато..</p>
+      </div>
     </div>
   </div>
 </section>

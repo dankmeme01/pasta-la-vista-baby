@@ -12,8 +12,6 @@
 
 {% block content %}
 
-
-
 <section class="page__main-block main-block">
   <div class="main-block__container _container">
     <div class="main-block__body">
@@ -52,7 +50,7 @@
   </div>
 </section>
 
-{% include "slider.html" %}
+{% include "base/slider.html" %}
 
 <section class="page__format format">
   <div class="format__container _container">
@@ -70,7 +68,7 @@
         <div class="item-format__text">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</div>
 
         <div class="item-format__button block-button block-button_small01">
-          <a href="{% url 'contact' %}">Забронювати стіл</a>
+          <a href="#popup__reservation" onclick="javascript:hideHash()">Забронювати стіл</a>
         </div>
       </div>
 

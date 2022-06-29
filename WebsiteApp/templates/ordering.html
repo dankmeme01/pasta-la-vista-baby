@@ -1,35 +1,100 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block static_files %}
+  <link rel="stylesheet" href="{% static '/css/ordering.css' %}">
+{% endblock %}
+
 {% block content %}
-<h1>ORDERING</h1>
+<div class="ordering__page ordering">
+  <div class="ordering__container _container">
+    <div class="ordering__header header-block">
+      <div class="header-block__title"><h2>Оформлення</h2></div>
+    </div>
+      <div class="forms__page">
+        <div class="forms">
+          <form id="order_form" action="/order_place/" method="POST">
+            {% csrf_token %}
+            <div class="form__contacts">
+              <h3 class="form__contacts__title">Контакти</h3>
 
-<form>
-  <label for="fname"> Ваше ім’я*</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="tel">Телефон*</label><br>
-  <input type="tel" name="tel" pattern="+380[0-9]{3}-[0-9]{3}">
-</form>
-<hr>
-<form>
-  <h2>Спосіб доставки</h2>
-    <input type="radio" id="Доставка" name="fav_language" value="Доставка">
-    <label for="html">Доставка</label><br>
-    <input type="radio" id="Самовивіз" name="fav_language" value="Самовивіз">
-    <label for="css">Самовивіз</label><br>
+              <p class="form__contacts__text">Ваше ім’я*</p>
+              <input class="form__contacts__input" type="text" id="full_name" name="full_name" placeholder="Введіть ваше ім’я">
+              <!-- <label class="form__contacts__label" for="fname">Введіть ваше ім’я</label> -->
 
-    <label for="Адреса">Адреса*</label><br>
-    <input type="text" id="Адреса" name="Адреса"><br>
-  </form>
-<hr>
+              <p class="form__contacts__text">Телефон*</p>
+              <input class="form__contacts__input" type="tel" name="phone_number"
+              pattern="+380[0-9]{3}-[0-9]{3}" placeholder="Введіть ваш телефон">
+              <!-- <label class="form__contacts__label" for="tel">Введіть ваш телефон</label> -->
 
-<form>
-  <h2>Спосіб оплати</h2>
-    <input type="radio" id="Готівкою" name="fav_language" value="Готівкою">
-    <label for="html">Готівкою</label><br>
-    <input type="radio" id="Карткою" name="fav_language" value="Карткою">
-    <label for="css">Карткою</label><br>
-  </form>
-<hr>
+              <hr class="hr__form">
 
-<a href="#" class="ordering">Замовити</a>
-<a href="#" class="instagram">Instagram</a>
+            </div>
+            <div class="form__choice">
+              <h3 class="form__contacts__title">Спосіб доставки</h3>
+
+              <div class="form__choice__item">
+                <input type="radio" id="Доставка" name="delivery_type" value="1">
+                <label for="html">Доставка</label><br>
+              </div>
+            </div>
+
+            <div class="form__choice__item">
+              <input type="radio" id="Самовивіз" name="delivery_type" value="2">
+              <label for="css">Самовивіз</label><br>
+            </div>
+
+            <div class="form__choice__item">
+              <!-- <label for="Адреса">Адреса*</label><br> -->
+              <p class="form__choice__text">Адреса*</p>
+              <input class="form__contacts__input" type="text" id="Адреса" name="Адреса" placeholder="Введіть адресу доставки" >
+            </div>
+
+            <div>
+              <h3 class="form__contacts__title">Спосіб оплати</h3>
+              <div class="form__choice__item">
+                <input type="radio" id="Готівкою" name="payment_type" value="1">
+                <label for="html">Готівкою</label>
+              </div>
+              <div class="form__choice__item">
+                <input type="radio" id="Карткою" name="payment_type" value="2">
+                <label for="css">Карткою</label>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="form__contacts__title">Додатково</h3>
+              <div class="form__additionally">
+                <div class="form__additionally__text">Одноразові прибори</div>
+                <div class="form__additionally__buttons">
+                  <a href="javascript:void(0)" onclick="orderModifyTool(-1)">
+                    <img src="{% static '/images/cart/minus.svg' %}" alt="Minus">
+                  </a>
+                  <input type="number" min=0 max=50 value=0 id="amount_of_tools" name="amount_of_tools" readonly>
+                  <a href="javascript:void(0)" onclick="orderModifyTool(+1)">
+                    <img src="{% static '/images/cart/plus.svg' %}" alt="Plus">
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="form__comment">
+                <p class="form__choice__text form__choice__text_2">Коментар*</p>
+                <input class="form__contacts__input form__contacts__input_2" type="text" id="Коментар" name="Коментар" placeholder="Введіть коментар" >
+              </div>
+            </div>
+          </form>
+        </div>
+
+      <div class="cart">
+        <ol class="popup__cart__list popup__cart__list_orddering">
+        </ol>
+        <div class="ordering__button">
+          <a href="javascript:void(0)" onclick="document.getElementById('order_form').submit()">Замовити</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

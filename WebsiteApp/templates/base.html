@@ -13,6 +13,7 @@
   <link rel="icon" type="image/png" sizes="16x16"  href="{% static '/images/favicon/favicon-16x16.png' %}">
   <link rel="manifest" href="{% static '/images/favicon/site.webmanifest' %}">
   <link rel="mask-icon" href="{% static '/images/favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
@@ -22,110 +23,26 @@
 </head>
 <body>
   <div class="wrapper">
-    <header class="header">
-      <nav class="navbar">
-        <div class="navbar__container _container">
-          <div class="nav__wrap">
-            <a href="{% url 'index' %}" class="Logo" id="Logo">
-              <img src="{% static '/images/header/logo.svg' %}" alt="Logo">
-            </a>
-
-            <ul class="menu" id="menu">
-              <li><a class = "menu__text" href="{% url 'about' %}">Про нас</a></li>
-              <li><a class = "menu__text" href="{% url 'menu' %}">Меню</a></li>
-              <li><a class = "menu__text" href="{% url 'contact' %}">Контакти</a></li>
-              <li><a class = "menu__text" href="#popup__reservation" onclick="javascript:hideHash()">Резерв столу</a></li>
-            </ul>
-
-            <ul class="menu__items">
-              <a href="tel:+380631407000" class="menu__item">
-                <img src="{% static '/images/header/Tel.svg' %}" alt="Tel">
-              </a>
-
-              <a href="#popup__cart" class="menu__item" onclick="javascript:hideHash()">
-                <img src="{% static '/images/header/Cart.svg' %}" alt="Cart(3)">
-              </a>
-            </ul>
-
-            <div class="hamb">
-              <a href="popup__cart" class="menu__cart">
-                <img src="{% static '/images/header/Cart.svg' %}" alt="Cart">
-              </a>
-              <div class="hamb__field" id="hamb">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <div class="popup" id="popup"></div>
-    </header>
+    {% include "base/header.html" %}
 
     <main class="page">
-      <div class="popup__cart" id="popup__cart">
-        <a href="#" class="popup__cart__area" onclick="javascript:hideHash()"></a>
-        <div class="popup__cart__body">
-          <div class="popup__cart__content">
-            <a href="#" class="popup__cart__close" onclick="javascript:hideHash()">
-              <img src="{% static '/images/header/Close.svg' %}" alt="">
-            </a>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat temporibus, dolor a possimus laborum hic sed adipisci reprehenderit quas, officiis autem omnis ipsa dolore? Perspiciatis esse quasi recusandae doloremque voluptatibus!
+      {% include "base/popups.html" %}
 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, doloremque. Omnis dignissimos doloribus alias. Praesentium eligendi nobis non magnam neque, ab enim ducimus fugiat, molestias aliquam, nulla nesciunt accusantium distinctio.
-
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae debitis illum dolor aliquid nisi, earum perferendis sint, cum quod officiis culpa fuga quae quas. Impedit veniam itaque nostrum aspernatur qui.
-
-            <!-- <div class="header-block__button block-button block-button_center">
-              <a href="#"></a>
-            </div> -->
-
-          </div>
-        </div>
-      </div>
-
-      <div id="popup__reservation" class="popup__reservation">
-        <a href="#" class="popup__reservation__area" onclick="javascript:hideHash()"></a>
-        <div class="popup__reservation__body">
-          <div class="popup__reservation__content">
-            <a href="#" class="popup__reservation__close" onclick="javascript:hideHash()">
-              <img src="{% static '/images/header/Close.svg' %}" alt="">
-            </a>
-            <div class="popup__reservation__titile">Reservation Form</div>
-            <div class="popup__reservation__text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio soluta, id accusamus deserunt minus voluptatibus. Qui, vero, ratione nulla a eveniet, maxime placeat maiores porro cupiditate explicabo fuga consequatur nesciunt.</div>
-          </div>
-        </div>
-      </div>
-      {% block content %}
-
-      {% endblock %}
+      {% block content %}{% endblock %}
     </main>
 
-    <footer class="footer">
-      <div class="footer__container _container">
-        <div class="footer__content">
-          <div class="our-menu__text header-block__subtitle">Чекаємо на ваші відгуки та відмітки у соціальних мережах!</div>
-
-          <div class="footer__items">
-            <div class="our-menu__button block-button block-button_footer">
-              <a href="https://www.instagram.com/plv_baby/" target="_blank">Instagram</a>
-            </div>
-
-            <div class="our-menu__button">
-              <a href="javascript:void(0)" onclick="javascript:scrollToTop()">
-                <img src="{% static '/images/footer/Arrow.svg' %}" alt="Arrow">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    {% include "base/footer.html" %}
   </div>
 
-  {% block static_files %}{% endblock %}
   <script src="{% static '/js/base.js' %}"></script>
+  {% block static_files %}{% endblock %}
   <link rel="stylesheet" href="{% static '/css/index.css' %}">
+
+  <div class="hidden_button_links" style="display: none;">
+    <p id="button_remove_svg">{% static '/images/cart/close.svg' %}</p>
+    <p id="button_plus_svg">{% static '/images/cart/plus.svg' %}</p>
+    <p id="button_minus_svg">{% static '/images/cart/minus.svg' %}</p>
+  </div>
+
 </body>
 </html>

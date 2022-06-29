@@ -1,0 +1,29 @@
+.slider-container_menu {
+  padding-top: 125px;
+}
+
+@media (max-width:992px) {
+  .slider-container_menu {
+    padding-top: 50px;
+  }
+}
+
+.carousel {
+  min-height: 300px;
+}
+
+@media (max-width:992px) {
+  .carousel {
+    min-height: 200px;
+  }
+}
+
+@media (max-width:768px) {
+  .carousel {
+    min-height: 152px;
+  }
+}
+
+.carousel-inner {
+  /* min-height: 300px;  */
+}

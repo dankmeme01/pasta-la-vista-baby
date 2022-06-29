@@ -1,0 +1,45 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static '/css/slider.css' %}">
+<div id="slider">
+  <div class="slide">
+    <div class="slide__image">
+      <img src="{% static '/images/slider/bg.jpg' %}" alt="">
+    </div>
+
+    <div class="slider__content">
+      <div class="slider__title">Відкрита вакансія - касир-бариста!
+      </div>
+
+      <div class="slider__suptitle">
+        • бажано з досвідом роботи <br>
+        • вік від 20 років
+      </div>
+      <div class="slider__button">
+        <a href="tel:+380631407000">+380 63 140 7000</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" style="background:coral;">
+    <img src="https://wallpapercave.com/wp/wp2634222.jpg" >
+  </div>
+
+  <div class="slide" style="background:crimson;">
+    <img src="https://wallpaperaccess.com/full/1154341.jpg" >
+  </div>
+
+  <div class="slide" style="background: #6edf10;">
+    <img src="https://images6.alphacoders.com/462/thumb-1920-462371.jpg" >
+  </div>
+
+  <!--Controlling arrows-->
+  <span class="controls" onclick="slideMove(-1)" id="left-arrow"><img src="{% static '/images/slider/a_left.svg' %}">
+  </span>
+  <span class="controls" id="right-arrow" onclick="slideMove(1)"><img src="{% static '/images/slider/a_right.svg' %}">
+  </span>
+</div>
+
+<div id="dots-con"></div>
+
+<script src="{% static '/js/slider.js' %}"></script>

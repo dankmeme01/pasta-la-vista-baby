@@ -1,0 +1,53 @@
+{% load static %}
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar__container _container">
+      <div class="nav__wrap">
+        <a href="{% url 'index' %}" class="Logo" id="Logo">
+          <img src="{% static '/images/header/logo.svg' %}" alt="Logo">
+        </a>
+
+        <ul class="menu" id="menu">
+          <li><a class = "menu__text" id="header_link_about" href="{% url 'about' %}">Про нас</a></li>
+          <li><a class = "menu__text" id="header_link_menu" href="{% url 'menu' %}">Меню</a></li>
+          <li><a class = "menu__text" id="header_link_contacts" href="{% url 'contact' %}">Контакти</a></li>
+          <li><a class = "menu__text" id="header_link_reservation" href="#popup__reservation" onclick="javascript:popupOpened()">Резерв столу</a>
+          </li>
+        </ul>
+
+        <ul class="menu__items">
+          <a href="tel:+380631407000" class="menu__item">
+            <img src="{% static '/images/header/Tel.svg' %}" alt="Tel">
+          </a>
+
+          <a href="#popup__cart" class="menu__item menu__item_cart" onclick="javascript:popupOpened()">
+            <img src="{% static '/images/header/Cart.svg' %}" alt="Cart(3)">
+            <div class="menu__item__cart__number">
+              
+            </div>
+          </a>
+        </ul>
+
+        <div class="hamb">
+          <a href="#popup__cart" class="menu__cart">
+            <img class = "cart2" src="{% static '/images/header/Cart.svg' %}" alt="Cart">
+            <div class="menu__item__cart__number2">
+              1
+            </div>
+          </a>
+          <div class="hamb__field" id="hamb">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="popup" id="popup"></div>
+</header>
+
+

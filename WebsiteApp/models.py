@@ -24,6 +24,7 @@ class FoodModel(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     weight = models.CharField(max_length=8)  # in grams
     category = models.ForeignKey(FoodCategory, on_delete=models.CASCADE)
+    in_stock = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title

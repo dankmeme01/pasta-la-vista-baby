@@ -1,0 +1,55 @@
+{% load static %}
+<div class="popup__cart" id="popup__cart">
+  <a href="#" class="popup__cart__area" onclick="javascript:popupClosed()"></a>
+  <div class="popup__cart__body">
+    <div class="popup__cart__content">
+      <div class="popup__cart__header">
+        <div class="popup__cart__title">Корзина</div>
+        <a href="#" class="popup__cart__close" onclick="javascript:popupClosed()">
+          <img src="{% static '/images/header/Close2.svg' %}" alt="">
+        </a>
+      </div>
+      <hr class="popup__cart__header__hr">
+
+      <div class="popup__cart__empty">
+        <div class="popup__cart__empty__title">Ваша корзина зараз порожня!</div>
+        <div class="popup__cart__empty__text">
+          Перейдіть в розділ “меню” та додайте бажані страви.
+        </div>
+      </div>
+      <ol class="popup__cart__list"></ol>
+      <hr class="popup__cart__header__hr">
+
+      <div class="popup__cart__price">
+        <div class="popup__cart__price__text">Ціна:</div>
+        <div class="popup__cart__price__price">
+          <div class="popup__cart__price__price1"></div>
+          <div class="popup__cart__price__price2">грн</div>
+        </div>
+      </div>
+
+      <div class="popup__cart__button" id="cart-button-order">
+        <a href="{% url 'ordering' %}">Оформити замовлення</a>
+      </div>
+      <div class="popup__cart__button" id="cart-button-menu">
+        <a href="{% url 'menu' %}">Перейти в меню</a>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div id="popup__reservation" class="popup__reservation">
+  <a href="#" class="popup__reservation__area" onclick="javascript:popupClosed()"></a>
+  <div class="popup__reservation__body">
+    <div class="popup__reservation__content">
+      <a href="#" class="popup__reservation__close" onclick="javascript:popupClosed()">
+        <img src="{% static '/images/header/Close.svg' %}" alt="">
+      </a>
+      <form action="#">
+        <input type="text">
+      </form>
+    </div>
+  </div>
+</div>

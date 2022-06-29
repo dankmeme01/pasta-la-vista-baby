@@ -19,8 +19,7 @@ def about(request):
 
 
 def menu(request):
-    ctx = {'menu': FoodModel.objects.all(
-    ), 'categories': FoodCategory.objects.all()}
+    ctx = {'menu': FoodModel.objects.filter(in_stock=True).order_by('category', 'title'), 'categories': FoodCategory.objects.all()}
     return render(request, 'menu.html', context=ctx)
 
 
@@ -73,8 +72,15 @@ def order_place(request):
             if not menuc:
                 return respond('No menu cookie', True)
 
-            for foodid in menuc.split(','):
-                food = FoodModel.objects.get(id=foodid)
+            for foodentry in menuc.split(','):
+                if not foodentry:
+                    continue
+
+                quantity, foodid = foodentry.split('x')
+                food = FoodModel.objects.filter(id=foodid)
+                if not food or not food.in_stock:
+                    return respond(f'Food {foodid} not found or out of stock', True)
+
                 total_price += food.price
                 food_ids.append(int(foodid))
 
@@ -87,6 +93,7 @@ def order_place(request):
             form.save_m2m()
             return respond('Order placed successfully')
         else:
+            print(form.errors)
             return respond('Invalid form', True)
     return respond("wrong request bozo", True)
 
@@ -109,6 +116,7 @@ def food_json(request):
             'title': food.title,
             'price': str(food.price),
             'weight': str(food.weight),
+            'image': food.image.url,
         } for food in food_list
     }
     return HttpResponse(
