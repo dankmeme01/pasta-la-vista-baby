@@ -1,6 +1,15 @@
 let cachedFoodLookup;
 
 let menuItemClicked = (id) => {
+  let elem = $(`#menu-item-${id}`);
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Added to cart',
+    showConfirmButton: false,
+    timer: 1000,
+    toast: true
+  })
   menuAdd(id);
 }
 

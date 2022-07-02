@@ -23,7 +23,7 @@ class FoodModel(models.Model):
     image = models.ImageField(upload_to='images/food/', storage=upload_storage)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     weight = models.CharField(max_length=8)  # in grams
-    category = models.ForeignKey(FoodCategory, on_delete=models.CASCADE)
+    category = models.ForeignKey(FoodCategory, on_delete=models.CASCADE, null=True)
     in_stock = models.BooleanField(default=True)
 
     def __str__(self):
@@ -46,8 +46,20 @@ class OrderModel(models.Model):
     total_cost = models.DecimalField(max_digits=9, decimal_places=2)
 
 
+class ReservationModel(models.Model):
+    full_name = models.CharField(max_length=160)
+    phone_number = models.CharField(max_length=20)
+    reservation_time = models.DateTimeField(auto_now_add=True)
+    reserved_for = models.DateTimeField()
+
+
 class OrderForm(ModelForm):
     class Meta:
         model = OrderModel
         fields = ['full_name', 'phone_number', 'delivery_type',
                   'delivery_address', 'payment_type', 'amount_of_tools', 'comment']
+
+class ReservationForm(ModelForm):
+    class Meta:
+        model = ReservationModel
+        fields = ['full_name', 'phone_number', 'reserved_for']

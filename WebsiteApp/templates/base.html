@@ -17,11 +17,19 @@
 
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
+  {% block static_files %}{% endblock %}
+  <link rel="stylesheet" href="{% static '/css/index.css' %}">
 
   <title>{% block title %}Base template{% endblock %}</title>
   {% block head %}{% endblock %}
 </head>
 <body>
+  <noscript>
+    <div class="noscript">
+      <p>You need to enable JavaScript to run this app.</p>
+    </div>
+  </noscript>
+
   <div class="wrapper">
     {% include "base/header.html" %}
 
@@ -35,8 +43,7 @@
   </div>
 
   <script src="{% static '/js/base.js' %}"></script>
-  {% block static_files %}{% endblock %}
-  <link rel="stylesheet" href="{% static '/css/index.css' %}">
+  {% block scripts %}{% endblock %}
 
   <div class="hidden_button_links" style="display: none;">
     <p id="button_remove_svg">{% static '/images/cart/close.svg' %}</p>

@@ -2,9 +2,8 @@
 {% load static %}
 
 {% block title %}Main page{% endblock %}
-{% block static_files %}
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<script src="{% static '/js/slider.js' %}"></script>
+
+{% block scripts %}
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="{% static '/css/slider.css' %}">
 
@@ -28,9 +27,10 @@
       </div>
     </div>
   </div>
-  <!-- <div class="main-block__image _ibg">
-    <img src="" alt="">
-  </div> -->
+  <div class="main-block__video">
+    <video autoplay muted loop preload="auto" src="{% static 'images/video.MOV' %}" class="video"></video>
+  </div>
+
 </section>
 
 <section class="page__our-menu our-menu">

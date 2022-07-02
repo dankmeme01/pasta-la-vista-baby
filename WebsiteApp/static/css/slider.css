@@ -13,9 +13,8 @@ box-shadow:2px 5px 10px rgba(0,0,0,0.4);;
   max-width: 1200px;
   height: 300px;
 
-  display:none;
-  animation-name:fade;
-  animation-duration:1s;
+  display: none;
+  animation: 1s slide ease-in-out;
 
   position: relative;
 }
@@ -42,12 +41,16 @@ box-shadow:2px 5px 10px rgba(0,0,0,0.4);;
   left: 0;
 }
 
+@keyframes slide {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
 
-
-
-@keyframes fade{
-from{opacity:0.5;}
-to{opacity:1;}
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
 }
 
 .controls{

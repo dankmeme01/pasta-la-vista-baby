@@ -11,29 +11,29 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = not int(os.environ.get('PLV_RUNNING_PROD', '0'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+if DEBUG:
+    with open(BASE_DIR / 'PastaLaVistaBaby' / 'secrets.txt') as f:
+        lines = f.readlines()
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+    SECRET_KEY = lines[0].partition('####')[0].strip()
+    MYSQL_USER = lines[1].partition('####')[0].strip()
+    MYSQL_PASSWORD = lines[2].partition('####')[0].strip()
+    MYSQL_DBNAME = lines[3].partition('####')[0].strip()
 
-# SECURITY WARNING: keep the secret key used in production secret!
 
-with open(BASE_DIR / 'PastaLaVistaBaby' / 'secrets.txt') as f:
-    lines = f.readlines()
+    ALLOWED_HOSTS = ['*']
 
-SECRET_KEY = lines[0].partition('####')[0].strip()
-MYSQL_USER = lines[1].partition('####')[0].strip()
-MYSQL_PASSWORD = lines[2].partition('####')[0].strip()
-MYSQL_DBNAME = lines[3].partition('####')[0].strip()
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
-
+else:
+    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+    ALLOWED_HOSTS = ['https://pasta-la-vista-baby.herokuapp.com/']
 
 # Application definition
 
@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'WebsiteApp.apps.WebsiteappConfig',
-    # 'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -84,15 +83,6 @@ WSGI_APPLICATION = 'PastaLaVistaBaby.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-# print(MYSQL_PASSWORD)
-# print(MYSQL_USER)
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -104,6 +94,12 @@ DATABASES = {
     }
 }
 
+if not DEBUG:
+    import dj_database_url
+    DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
+else:
+    import pymysql
+    pymysql.install_as_MySQLdb()
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

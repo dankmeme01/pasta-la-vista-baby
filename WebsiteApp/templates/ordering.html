@@ -5,6 +5,11 @@
   <link rel="stylesheet" href="{% static '/css/ordering.css' %}">
 {% endblock %}
 
+{% block scripts %}
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="{% static '/js/ordering.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="ordering__page ordering">
   <div class="ordering__container _container">
@@ -44,11 +49,11 @@
               <label for="css">Самовивіз</label><br>
             </div>
 
-            <div class="form__choice__item">
+            <!-- <div class="form__choice__item"> -->
               <!-- <label for="Адреса">Адреса*</label><br> -->
-              <p class="form__choice__text">Адреса*</p>
-              <input class="form__contacts__input" type="text" id="Адреса" name="Адреса" placeholder="Введіть адресу доставки" >
-            </div>
+            <p class="form__choice__text">Адреса*</p>
+            <input class="form__contacts__input" type="text" id="Адреса" name="Адреса" placeholder="Введіть адресу доставки" >
+            <!-- </div> -->
 
             <div>
               <h3 class="form__contacts__title">Спосіб оплати</h3>
@@ -56,7 +61,7 @@
                 <input type="radio" id="Готівкою" name="payment_type" value="1">
                 <label for="html">Готівкою</label>
               </div>
-              <div class="form__choice__item">
+              <div class="form__choice__item form__choice__item_last">
                 <input type="radio" id="Карткою" name="payment_type" value="2">
                 <label for="css">Карткою</label>
               </div>
@@ -81,17 +86,17 @@
             <div>
               <div class="form__comment">
                 <p class="form__choice__text form__choice__text_2">Коментар*</p>
-                <input class="form__contacts__input form__contacts__input_2" type="text" id="Коментар" name="Коментар" placeholder="Введіть коментар" >
+                <textarea class="form__contacts__area" id="Коментар" name="Коментар" rows="5" cols="35" placeholder="Введіть коментар" ></textarea>>
               </div>
             </div>
           </form>
         </div>
 
       <div class="cart">
-        <ol class="popup__cart__list popup__cart__list_orddering">
+        <ol class="popup__cart__list_orddering">
         </ol>
         <div class="ordering__button">
-          <a href="javascript:void(0)" onclick="document.getElementById('order_form').submit()">Замовити</a>
+          <a href="javascript:void(0)" onclick="submitForm()">Замовити</a>
         </div>
       </div>
     </div>

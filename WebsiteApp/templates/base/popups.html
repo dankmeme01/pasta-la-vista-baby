@@ -1,4 +1,6 @@
 {% load static %}
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="popup__cart" id="popup__cart">
   <a href="#" class="popup__cart__area" onclick="javascript:popupClosed()"></a>
   <div class="popup__cart__body">
@@ -47,8 +49,20 @@
       <a href="#" class="popup__reservation__close" onclick="javascript:popupClosed()">
         <img src="{% static '/images/header/Close.svg' %}" alt="">
       </a>
-      <form action="#">
-        <input type="text">
+      <form action="{% url 'reserve_table' %}" id="reservation-form" method="POST">
+        {% csrf_token %}
+        <p class="form__reservation__text">Ваше ім’я*</p>
+        <input class="form__reservation__input" type="text" id="full_name" name="full_name" placeholder="Введіть ваше ім’я">
+
+        <p class="form__reservation__text">Телефон*</p>
+        <input class="form__reservation__input" type="tel" name="phone_number"
+        pattern="+380[0-9]{3}-[0-9]{3}" placeholder="Введіть ваш телефон">
+
+        <p class="form__reservation__text">Дата/Час*</p>
+        <input class="form__reservation__date" type="datetime-local" name="reserved_for">
+        <div class="form__reservation__button">
+          <a href="javascript:void(0)" onclick="submitReservation()">Зарезервувати</a>
+        </div>
       </form>
     </div>
   </div>

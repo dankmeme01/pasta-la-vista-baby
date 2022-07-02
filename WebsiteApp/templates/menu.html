@@ -31,10 +31,11 @@
       {% for cat in categories %}
         <div class="menu1__category_items" id="category-{{ cat.id }}">
           <div class="menu1__category_title"><h1>{{ cat.name }}</h1></div>
+          <div class="menu1__item__column">
           {% for item in cat.foodmodel_set.all %}
             {% if item.in_stock %}
-            <div class="menu1__item__column">
-              <div class="menu1__item item-menu food-category-{{ item.category.id }}">
+
+            <div class="menu1__item item-menu food-category-{{ item.category.id }}" id="menu-item-{{ item.id }}">
                 <div class="item-menu__image">
                   <img src="{% get_static_prefix %}{{ item.image }}" alt="{{ item.title }}">
                   <div class="item-menu__image__weight">{{ item.weight }}</div>
@@ -48,15 +49,15 @@
                       <a href="javascript:menuItemClicked({{ item.id }})">
                         <img src="{% static '/images/menu/Cart_Icon.svg' %}" alt="">
                       </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-          {% endfor %}
-          </div>
-        </div>
-      {% endfor %}
+                    </div> <!-- /.item-menu__price__cart -->
+                  </div> <!-- item-menu__price -->
+                </div> <!-- /.item-menu__content -->
+            </div> <!-- .menu1__item -->
+            {% endif %} <!-- if item.in_stock -->
+          {% endfor %} <!-- end for item in cat.foodmodel_set.all -->
+          </div> <!-- /.menu1__item__column -->
+        </div> <!-- end of menu1__category_items -->
+      {% endfor %} <!-- end for cat in categories -->
       <div class="menu1__item menu1__empty">
         <p>Поки що тут пустовато..</p>
       </div>

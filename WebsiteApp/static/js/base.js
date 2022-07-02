@@ -3,14 +3,15 @@
 const hamb = document.querySelector("#hamb")
 const popup = document.querySelector("#popup")
 const menu = document.querySelector("#menu").cloneNode(1);
-const body = document.body
+const body = document.body;
+let loadHooks = [];
 
 hamb.addEventListener("click", hambHandler);
 
 function hambHandler(e) {
   e.preventDefault();
   popup.classList.toggle("open");
-  hamb.classList.toggle("active");
+  hamb.classList.toggle("burger_active");
   body.classList.toggle("noscroll");
 
   renderPopup();
@@ -88,7 +89,7 @@ let updateCart = (menu = null) => {
     });
 
     // only ES10, fallback method availale
-    if (Object.fromEntries && null == 3) {
+    if (Object.fromEntries) {
       sorted = Object.fromEntries(sorted);
     }
     else {
@@ -119,6 +120,21 @@ let updateCart = (menu = null) => {
   if (foodAmount >= 10) {
     $(".menu__item__cart__number").addClass("menu__item__cart__number_mod");
     $(".menu__item__cart__number2").addClass("menu__item__cart__number2_mod");
+  }
+
+  let link = document.location.pathname;
+  // trim slashes with regex
+  link = link.replace(/^\/|\/$/g, '');
+  if (link == 'ordering') {
+    let modbody = cartbody.clone();
+    modbody.removeClass("popup__cart__list");
+    modbody.addClass("popup__cart__list_orddering");
+    console.log(modbody)
+    let ordbtn = $(".ordering__button");
+    let cbody = $(".cart");
+    cbody.empty();
+    modbody.appendTo(cbody);
+    cbody.append(ordbtn);
   }
 }
 
@@ -197,7 +213,7 @@ let menuRemoveAll = () => {
   updateCart({});
 }
 
-window.onload = async () => {
+loadHooks.push(async () => {
   lookupFood().then(data => {
     cachedFoodLookup = data;
     updateCart();
@@ -218,7 +234,7 @@ window.onload = async () => {
       $("#header_link_about").addClass("menu__text_selected");
       break;
   }
-}
+})
 
 let lookupFoodById = (id) => {
   if (!cachedFoodLookup) {
@@ -248,22 +264,7 @@ let lookupFood = () => {
   });
 }
 
-// let foodElemBuilder = (name, price, id, qty, imgsrc) => {
-//   let listEntry = $(`<li class='cart__item'></li>`);
-//   // cart__item_title - cart__item_price - cart__item_qty
-//   let imageTag = $(`<div class='cart__item_image'><img src='${imgsrc}' alt='${name}'></div>`);
-//   let paraTag = $(`<div class='cart__item_text'><span class='cart__item_title'>${name}</span><span class='cart__item_price'>${price} грн.</span></div>`);
-//   let buttons = $(`<div class='cart__item_buttons'><a href="javascript:menuRemove(${id})"><ion-icon name="trash" class="cart__remove"></ion-icon></a>
-//                    <div class='cart__item_modifiers'><a href="javascript:menuSubstract(${id})"><ion-icon name="remove-circle" class="cart__substract"></ion-icon></a>
-//                    <span class='cart__item_qty'>${qty}</span>
-//                    <a href="javascript:menuAdd(${id})"><ion-icon name="add-circle" class="cart__add"></ion-icon></a></div></div>`);
-//   listEntry.append(imageTag);
-//   listEntry.append(paraTag);
-//   listEntry.append(buttons);
-//   return listEntry;
-// }
-
-let foodElemBuilder = (name, price, id, qty, imgsrc) => {
+let foodElemBuilder = (name, price, id, qty, imgsrc, forOrdering = false) => {
   let buttonLinks = $(`.hidden_button_links`);
   let trashLink = buttonLinks.find('#button_remove_svg').text();
   let plusLink = buttonLinks.find('#button_plus_svg').text();
@@ -317,4 +318,51 @@ let orderModifyTool = (num) => {
   if (n < min) n = min;
   if (n > max) n = max;
   $("#amount_of_tools").val(n);
+}
+
+let runHooks = () => {
+  console.log("DOM loaded, executing hooks:", loadHooks.length);
+  for (let hook of loadHooks) {
+    hook();
+  }
+};
+
+document.addEventListener("DOMContentLoaded", runHooks);
+
+
+let submitReservation = () => {
+  Swal.fire({
+    title: 'Точно?',
+    icon: 'question',
+    text: 'Ви дійсно хочете підтвердити резервування?',
+    showDenyButton: true,
+    confirmButtonColor: '#3085d6',
+    denyButtonColor: '#d33',
+    confirmButtonText: 'Так, підтвердити!',
+    denyButtonText: 'Ні, відмінити'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        url: $("#order_form").attr("action"),
+        type: $("#order_form").attr("method"),
+        data: $("#order_form").serialize(),
+        success: (result) => {
+          Swal.fire({
+            title: 'Успiх!',
+            text: result.message,
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+        },
+        error: (error) => {
+          Swal.fire({
+            title: 'Помилка!',
+            text: error.responseText,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+      });
+    }
+  })
 }

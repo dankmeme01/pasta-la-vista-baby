@@ -47,7 +47,10 @@
   letter-spacing: 0.02em;
   color: #FFFFFF;
   margin-bottom: 30px;
+  margin-top: 0px;
 }
+
+
 
 .form__contacts__text {
   margin-bottom: 15px;
@@ -55,21 +58,38 @@
 
 .form__contacts__input {
   margin-bottom: 30px;
+  
 
   background: rgba(172, 172, 172, 0.2);
   border-radius: 10px;
   padding: 0px 15px;
-  width: 565px;
+  width: 500px;
   height: 60px;
 
 
-  font-family: 'Nunito';
-font-style: normal;
-font-weight: 300;
-font-size: 20px;
-line-height: 100%;
-color: rgba(255, 255, 255, 0.7);
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 100%;
+    color: rgba(255, 255, 255, 0.7);
 }
+
+.form__contacts__area {
+  background: rgba(172, 172, 172, 0.2);
+  border-radius: 10px;
+  padding: 15px 15px;
+  width: 500px;
+
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 100%;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
 
 .form__contacts__label {
 
@@ -82,6 +102,9 @@ color: rgba(255, 255, 255, 0.7);
   margin-bottom: 15px;
 }
 
+.form__choice__item_last {
+  margin-bottom: 30px;
+}
 
 
 
@@ -120,7 +143,7 @@ input[type = "radio"]:checked {
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 300;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 100%;
   color: #FFFFFF;
 }
@@ -133,6 +156,17 @@ input[type = "radio"]:checked {
 }
 
 .form__contacts__input_2 {
+}
+
+input[type = "number"] {
+  background-color: transparent;
+  text-align: center; 
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 100%;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* ============================================================================ */
@@ -178,8 +212,13 @@ input[type = "radio"]:checked {
   text-align: center;
   letter-spacing: 0.02em;
   color: #000000;
+
+  transition: all 0.3s ease 0s;
 }
 
+.ordering__button a:hover {
+  background-color: #FFF;
+}
 
 
 
@@ -190,7 +229,7 @@ input[type = "radio"]:checked {
 
 /* ============================================================================ */
 
-@media (max-width:1200px) {
+@media (max-width:1250px) {
   .forms__page {
     flex-direction: column;
     align-items: center;
@@ -209,16 +248,28 @@ input[type = "radio"]:checked {
     margin-top: 50px;
     padding: 18px 100px;
   }
+
+  .form__contacts__input {
+    width: 570px;
+  }
+
+  .form__contacts__area {
+    width: 570px;
+  }
 }
 
-@media (max-width:700px) {
+@media (max-width:769px) {
   .forms {
     /* max-width: 600px; */
     padding: 25px 25px;
   }
 
   .form__contacts__input {
-    width: 500px;
+    width: 535px;
+  }
+
+  .form__contacts__area {
+    width: 535px;
   }
 }
 
@@ -227,13 +278,61 @@ input[type = "radio"]:checked {
     width: 400px;
   }
 
+  .form__contacts__area {
+    width: 400px;
+  }
+
   .form__contacts__title {
     font-size: 28px;
+  }
+
+  .cart {
+    width: 460px;
+  }
+
+  .ordering__button {
+    padding: 0;
   }
 }
 
 @media (max-width:500px) {
+
+  .form__contacts__area {
+    width: 274px;
+  }
+
   .form__contacts__input {
     width: 274px;
   }
+
+  .form__additionally {
+    flex-direction: column;
+  }
+
+  .form__additionally__text {
+    margin-bottom: 20px;
+  }
+
+  .cart {
+    width: 340px;
+  }
+
+  .cart__item_title {
+    font-size: 18px;
+  }
+
+  .cart__item_price {
+    font-size: 20px;
+  }
+
+  .cart__item {
+    margin-bottom: 50px;
+  }
+
+  .ordering__button a {
+    font-size: 18px;
+    padding: 20px 40px;
+  }
 }
+
+
