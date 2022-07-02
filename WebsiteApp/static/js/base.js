@@ -343,9 +343,9 @@ let submitReservation = () => {
   }).then((result) => {
     if (result.isConfirmed) {
       $.ajax({
-        url: $("#order_form").attr("action"),
-        type: $("#order_form").attr("method"),
-        data: $("#order_form").serialize(),
+        url: $("#reservation-form").attr("action"),
+        type: $("#reservation-form").attr("method"),
+        data: $("#reservation-form").serialize(),
         success: (result) => {
           Swal.fire({
             title: 'Успiх!',
