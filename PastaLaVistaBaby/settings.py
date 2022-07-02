@@ -32,6 +32,7 @@ if DEBUG:
     ALLOWED_HOSTS = ['*']
 
 else:
+    MYSQL_USER = MYSQL_PASSWORD = MYSQL_DBNAME = ''
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
     ALLOWED_HOSTS = ['https://pasta-la-vista-baby.herokuapp.com/']
 
