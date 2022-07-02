@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,24 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="../static/css/slider2.css">
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <style>
+    .main-carousel {
+      max-height: 300px;
+    }
+    .main-carousel img {
+      max-height: 300px;
+    }
+  </style>
 
 </head>
 <body>
 
-
-
-
-    <!--Slider-->
-
-
-
+<div class="main-carousel">
+  <img src="{% static '/images/slider/bg.jpg' %}" alt="">
+  <img src="https://wallpapercave.com/wp/wp2634222.jpg" >
+  <img src="https://wallpaperaccess.com/full/1154341.jpg" >
+  <img src="https://images6.alphacoders.com/462/thumb-1920-462371.jpg" >
+</div>
 
 <script type="text/javascript">
-
-
+  $(".main-carousel").flickity({
+    cellAlign: 'left',
+    contain: true,
+    autoPlay: true,
+    imagesLoaded: true
+  });
 </script>
 </body>
 </html>

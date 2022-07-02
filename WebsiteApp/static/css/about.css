@@ -571,7 +571,7 @@ color: #FFFFFF;
 .about__us__container {
 }
 
-.header-block__title {
+.header-block__title_mod{
   margin-bottom: 60px;
 }
 .about__us__body {
@@ -598,6 +598,11 @@ color: #FFFFFF;
   letter-spacing: 0.02em;
   color: #FFFFFF;
 }
+
+.about__us__text p:not(:last-child) {
+  margin-bottom: 15px;
+}
+
 .about__us__image {
   flex: 1 1 auto;
   position: relative;
@@ -670,7 +675,7 @@ color: #FFFFFF;
 
   .about__us__text {
     padding: 0px 0px 0px 0px;
-    text-align: center;
+    /* text-align: center; */
   }
 
   .about__us__text_second {

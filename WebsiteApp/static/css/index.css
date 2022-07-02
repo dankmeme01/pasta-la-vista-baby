@@ -528,6 +528,7 @@
     line-height: 140%;
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
+    font-size: 26px;
   }
   .main-block__button {
     text-align: center;
