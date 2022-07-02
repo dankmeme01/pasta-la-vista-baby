@@ -278,7 +278,7 @@
   .menu__item__cart__number {
     position: absolute;
     top: 50%;
-    right: 26%;
+    right: 26.5%;
     z-index: 1;
 
     font-family: 'Nunito';

@@ -34,7 +34,7 @@ if DEBUG:
 else:
     MYSQL_USER = MYSQL_PASSWORD = MYSQL_DBNAME = ''
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
-    ALLOWED_HOSTS = ['https://pasta-la-vista-baby.herokuapp.com/']
+    ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(',')
 
 # Application definition
 
@@ -146,3 +146,6 @@ MEDIA_ROOT = BASE_DIR / 'WebsiteApp' / 'images'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if os.environ.get('FORCE_HEROKU_DEBUG', '0') == '1':
+    DEBUG = True
