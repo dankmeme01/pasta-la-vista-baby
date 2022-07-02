@@ -610,14 +610,14 @@
       padding: 0px 0px 30px 0px;
     }
   }
-/* 
+/*
   @media (max-width:900px) {
     .main-block__title span{
     top: -20%;
     left: 72%;
     }
   } */
-/* 
+/*
   @media (max-width:800px) {
     .main-block__title span{
       top: -20%;
@@ -853,19 +853,6 @@
     flex: 0 1 33.333%;
   }
 
-  /* ._ibg {
-    position: relative;
-  }
-
-  ._ibg img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-  } */
-
   .item-format {
     position: relative;
 
@@ -910,27 +897,7 @@
   }
 
   .item-format img {
-    /* width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    object-fit: cover; */
   }
-
-
-  /* .item-format_first {
-    background: url("../img/format/FirstColumnImage.png") cover no-repeat;
-    object-fit: cover;
-
-  }
-  .item-format_second {
-    background-image: url("../img/format/SecondColumnImage.png");
-    object-fit: cover;
-  }
-  .item-format_third {
-    background-image: url("../img/format/ThirdColumnImage.png");
-    object-fit: cover;
-  } */
 
 
   .item-format:not(:last-child){
@@ -1708,13 +1675,6 @@
     background: #c46711;
   }
 
-  .popup__cart__close {
-    /* position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 10px; */
-  }
-
   .popup__cart__list {
     /* height: calc(100% - 75px); */
     max-height: 60vh;
@@ -1763,15 +1723,6 @@
     max-width: 90%;
     max-height: 100%;
 
-
-    /* position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-
-    display: none; */
   }
 
 .cart__item_text {
@@ -1956,20 +1907,12 @@
 
   font-family: 'Nunito';
   font-style: normal;
-  font-weight: 500; 
+  font-weight: 500;
   font-size: 10px;
   line-height: 16px;
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.8);
 }
-
-/* .menu__item__cart__number2 {
-  background-color: #FFBF05;
-}
-
-.menu__item__cart__number2_mod {
-  background-color: #FFBF05 ;
-} */
 
 .menu__item__cart__number2_mod {
   top: 30%;
@@ -1993,17 +1936,3 @@
   color: #FFF !important;
 }
 
-
-
-/* .main-block__video {
-  padding: 0px 0px 50% 0px;
-}
-
-.main-block__video video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vh;
-  height: 100%;
-  z-index: 0; } 
-  */
