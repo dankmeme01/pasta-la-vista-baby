@@ -138,6 +138,7 @@ def reserve_table(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
+            print("Saving form")
             form.save()
             return respond("Бронювання підтверджено! Чекаємо на вас у зазначений нас в нашому ресторані! Дякуємо, що обираєте Pasta la Vista!")
 
