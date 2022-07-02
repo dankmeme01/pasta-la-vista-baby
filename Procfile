@@ -1,2 +1,2 @@
 web: gunicorn PastaLaVistaBaby.wsgi
-release: ./release.sh
+release: chmod +x ./release.sh && ./release.sh
