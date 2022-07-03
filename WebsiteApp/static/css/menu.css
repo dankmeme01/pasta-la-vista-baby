@@ -496,6 +496,7 @@ color: #FFFFFF;
 
 .menu1__classes:not(:last-child) {
   margin-bottom: 65px;
+  margin-top: 45px;
 }
 
 .menu1__class {

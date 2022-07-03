@@ -1,29 +1,114 @@
-.slider-container_menu {
-  padding-top: 125px;
+.main-slider {
+  max-width: 1200px;
+  max-height: 300px;
+  margin: 0 auto;
+  margin-top: 150px;
+  margin-bottom: 10px;
 }
+
+/* .flickity-page-dots .dot{
+  background-color: #FFBF05;
+} */
+
+
+
+.slide {
+  /* width: 1200px;
+  height: 300px; */
+  
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slider__content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider__title {
+  font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 36px;
+line-height: 100%;
+/* identical to box height, or 36px */
+
+text-align: center;
+letter-spacing: 0.02em;
+
+/* Колір тексту */
+
+color: rgba(255, 255, 255, 0.8);
+
+margin-bottom: 20px;
+}
+
+.slider__suptitle {
+  margin-bottom: 20px;
+
+  font-family: 'Nunito';
+font-style: normal;
+font-weight: 300;
+font-size: 26px;
+line-height: 100%;
+/* or 26px */
+
+text-align: center;
+letter-spacing: 0.02em;
+
+/* Колір тексту */
+
+color: rgba(255, 255, 255, 0.8);
+}
+
+.slider__button a{
+  font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 36px;
+line-height: 100%;
+/* identical to box height, or 36px */
+
+text-align: center;
+letter-spacing: 0.02em;
+
+/* Колір тексту */
+
+color: rgba(255, 255, 255, 0.8);
+transition: all 0.5s ease 0s;
+}
+
+.slider__button a:hover {
+  text-decoration: underline;
+}
+
+
+.slide__image {
+  position: relative;
+  padding: 0px 0px 25% 0px;
+}
+
+.slide__image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+}
+
+
 
 @media (max-width:992px) {
-  .slider-container_menu {
-    padding-top: 50px;
+  .main-slider {
+    margin-top: 100px;
   }
-}
-
-.carousel {
-  min-height: 300px;
-}
-
-@media (max-width:992px) {
-  .carousel {
-    min-height: 200px;
-  }
-}
-
-@media (max-width:768px) {
-  .carousel {
-    min-height: 152px;
-  }
-}
-
-.carousel-inner {
-  /* min-height: 300px;  */
 }
