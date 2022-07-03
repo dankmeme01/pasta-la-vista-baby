@@ -1,7 +1,9 @@
 {% load static %}
 
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <link rel="stylesheet" href="{% static '/css/slider.css' %}">
-<div id="slider">
+<div class="main-slider">
   <div class="slide">
     <div class="slide__image">
       <img src="{% static '/images/slider/bg.jpg' %}" alt="">
@@ -32,14 +34,6 @@
   <div class="slide" style="background: #6edf10;">
     <img src="https://images6.alphacoders.com/462/thumb-1920-462371.jpg" >
   </div>
-
-  <!--Controlling arrows-->
-  <span class="controls" onclick="slideMove(-1)" id="left-arrow"><img src="{% static '/images/slider/a_left.svg' %}">
-  </span>
-  <span class="controls" id="right-arrow" onclick="slideMove(1)"><img src="{% static '/images/slider/a_right.svg' %}">
-  </span>
 </div>
-
-<div id="dots-con"></div>
 
 <script src="{% static '/js/slider.js' %}"></script>
