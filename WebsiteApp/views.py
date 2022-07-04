@@ -116,6 +116,7 @@ def food_json(request):
     return HttpResponse(
         json.dumps(food_dict), content_type='application/json')
 
+@staff_member_required
 def orders_json(request):
     order_list = OrderModel.objects.filter(completed=False)
     reservation_list = ReservationModel.objects.filter(reserved_for__gte=datetime.now())

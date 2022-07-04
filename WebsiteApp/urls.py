@@ -14,5 +14,4 @@ urlpatterns = [
     path('food_json/', views.food_json, name='food_json'),
     path('orders_json/', views.orders_json, name='orders_json'),
     path('reserve_table/', views.reserve_table, name='reserve_table'),
-    path('test/', views.test, name='test')
 ]
