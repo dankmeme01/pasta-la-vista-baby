@@ -227,7 +227,11 @@ input[type = "number"] {
   max-height: 100vh;
 } 
 
-@media (max-width:px) {}
+@media (max-width:1200px) {
+  .popup__cart__list_orddering {
+    max-height: 100%;
+  } 
+}
 
 /* ============================================================================ */
 
