@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block static_files %}
-  <link rel="stylesheet" href="{% static '/css/ordering.css' %}">
+  <link rel="stylesheet" href="{% static 'css/ordering.css' %}">
 {% endblock %}
 
 {% block scripts %}
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="{% static '/js/ordering.js' %}"></script>
+  <script src="{% static 'js/ordering.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -73,11 +73,11 @@
                 <div class="form__additionally__text">Одноразові прибори</div>
                 <div class="form__additionally__buttons">
                   <a href="javascript:void(0)" onclick="orderModifyTool(-1)">
-                    <img src="{% static '/images/cart/minus.svg' %}" alt="Minus">
+                    <img src="{% static 'images/cart/minus.svg' %}" alt="Minus">
                   </a>
                   <input type="number" min=0 max=50 value=0 id="amount_of_tools" name="amount_of_tools" readonly>
                   <a href="javascript:void(0)" onclick="orderModifyTool(+1)">
-                    <img src="{% static '/images/cart/plus.svg' %}" alt="Plus">
+                    <img src="{% static 'images/cart/plus.svg' %}" alt="Plus">
                   </a>
                 </div>
               </div>

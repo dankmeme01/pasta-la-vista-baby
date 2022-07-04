@@ -8,7 +8,7 @@
       <div class="popup__cart__header">
         <div class="popup__cart__title">Корзина</div>
         <a href="#" class="popup__cart__close" onclick="javascript:popupClosed()">
-          <img src="{% static '/images/header/Close2.svg' %}" alt="">
+          <img src="{% static 'images/header/Close2.svg' %}" alt="">
         </a>
       </div>
 
@@ -50,7 +50,7 @@
   <div class="popup__reservation__body">
     <div class="popup__reservation__content">
       <a href="#" class="popup__reservation__close" onclick="javascript:popupClosed()">
-        <img src="{% static '/images/header/Close.svg' %}" alt="">
+        <img src="{% static 'images/header/Close.svg' %}" alt="">
       </a>
       <form action="{% url 'reserve_table' %}" id="reservation-form" method="POST">
         {% csrf_token %}

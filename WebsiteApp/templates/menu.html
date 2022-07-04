@@ -4,8 +4,8 @@
 {% block title %}Menu{% endblock %}
 
 {% block static_files %}
-  <link rel="stylesheet" href="{% static '/css/menu.css' %}">
-  <script src="{% static '/js/menu.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+  <script src="{% static 'js/menu.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -47,7 +47,7 @@
                     <div class="item-menu__price__text">{{ item.price }} грн</div>
                     <div class="item-menu__price__cart">
                       <a href="javascript:menuItemClicked({{ item.id }})">
-                        <img src="{% static '/images/menu/Cart_Icon.svg' %}" alt="">
+                        <img src="{% static 'images/menu/Cart_Icon.svg' %}" alt="">
                       </a>
                     </div> <!-- /.item-menu__price__cart -->
                   </div> <!-- item-menu__price -->
