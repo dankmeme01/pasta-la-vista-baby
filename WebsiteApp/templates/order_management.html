@@ -22,7 +22,7 @@
                     <p class="order__number text__style">Номер телефону: <span>{{ order.phone_number }}</span></p>
                     <p class="order__delivery_type text__style">Тип доставки: <span>{% if order.delivery_type == "1" %}доставка{% else %}самовивiз{% endif %}</span></p>
                     <p class="order__delivery_address text__style">Адреса доставки: <span>{{ order.delivery_address }}</span></p>
-                    <p class="order__payment_type text__style">Тип оплати: <span>{% if order.payment_type == "1" %}нал{% else %}карта{% endif %}</span></p>
+                    <p class="order__payment_type text__style">Тип оплати: <span>{% if order.payment_type == "1" %}грошi{% else %}карта{% endif %}</span></p>
                     <p class="order__amount_of_tools text__style">К-сть приборiв: <span>{{ order.amount_of_tools }}</span></p>
                     <p class="text__style">Коментар: {{ order.comment }}</p>
                     {% if order.payment_type == "1" %}
