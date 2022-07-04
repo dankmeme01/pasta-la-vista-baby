@@ -27,12 +27,13 @@ if DEBUG:
     MYSQL_USER = lines[1].partition('####')[0].strip()
     MYSQL_PASSWORD = lines[2].partition('####')[0].strip()
     MYSQL_DBNAME = lines[3].partition('####')[0].strip()
-
+    POSTGRES_PASSWORD = open(BASE_DIR / 'postgres_password.txt').read().strip()
 
     ALLOWED_HOSTS = ['*']
 
 else:
     MYSQL_USER = MYSQL_PASSWORD = MYSQL_DBNAME = ''
+    POSTGRES_PASSWORD = ''
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
     CSRF_TRUSTED_ORIGINS = ["https://pasta-la-vista-baby.herokuapp.com"]
     ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(',')
@@ -91,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'deav5rnco301b0',
         'USER': 'glbflewxrhoqtg',
-        'PASSWORD': open(BASE_DIR / 'postgres_password.txt').read().strip(),
+        'PASSWORD': POSTGRES_PASSWORD,
         'HOST': 'ec2-52-49-120-150.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
