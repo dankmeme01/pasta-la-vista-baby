@@ -34,7 +34,7 @@ if DEBUG:
 else:
     MYSQL_USER = MYSQL_PASSWORD = MYSQL_DBNAME = ''
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
-    CSRF_TRUSTED_ORIGINS = ["pasta-la-vista-baby.herokuapp.com", "localhost", "127.0.0.1"]
+    CSRF_TRUSTED_ORIGINS = ["https://pasta-la-vista-baby.herokuapp.com", "localhost", "127.0.0.1"]
     ALLOWED_HOSTS = CSRF_TRUSTED_ORIGINS.copy()
 
 # Application definition
