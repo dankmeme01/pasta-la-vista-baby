@@ -35,7 +35,7 @@ else:
     MYSQL_USER = MYSQL_PASSWORD = MYSQL_DBNAME = ''
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
     CSRF_TRUSTED_ORIGINS = ["https://pasta-la-vista-baby.herokuapp.com"]
-    ALLOWED_HOSTS =  ["pasta-la-vista-baby.herokuapp.com", "localhost", "127.0.0.1"]
+    ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(',')
 
 # Application definition
 
@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'deav5rnco301b0',
         'USER': 'glbflewxrhoqtg',
-        'PASSWORD': '3206c697e0bed7e19766f6e7bd77e2b41f01baac61aef5da5c9e40dec4202074',
+        'PASSWORD': 'nope',
         'HOST': 'ec2-52-49-120-150.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
