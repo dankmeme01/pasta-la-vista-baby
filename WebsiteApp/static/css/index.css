@@ -1990,7 +1990,7 @@
 @media (max-width:769px) {
   .popup__cart__content {
     min-width: 100%;
-    min-height: 100%;
+    /* min-height: 100%; */
   }
 
   .popup__cart__header {
