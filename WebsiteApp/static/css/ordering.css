@@ -225,7 +225,9 @@ input[type = "number"] {
 
 .popup__cart__list_orddering {
   max-height: 100vh;
-}
+} 
+
+@media (max-width:px) {}
 
 /* ============================================================================ */
 
