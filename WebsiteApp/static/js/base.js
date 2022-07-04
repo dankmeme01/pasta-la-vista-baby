@@ -97,11 +97,13 @@ let updateCart = (menu = null) => {
     }
 
     for (let foodId in menu) {
+      let isLast = foodId == Object.keys(menu)[Object.keys(menu).length - 1];
       let qty = parseInt(menu[foodId]);
       let { title, price, image } = lookupFoodById(foodId);
-      cartbody.append(foodElemBuilder(title, price, foodId, qty, image));
+      cartbody.append(foodElemBuilder(title, price, foodId, qty, image, isLast));
       total += price * qty;
       foodAmount += qty; // replace qty with 1 to get the amount of food
+      cartbody.append($(`<div class="cart__hr"></div>`));
     }
     $(".popup__cart__empty").hide();
     $(".popup__cart__price").show();
@@ -264,7 +266,7 @@ let lookupFood = () => {
   });
 }
 
-let foodElemBuilder = (name, price, id, qty, imgsrc, forOrdering = false) => {
+let foodElemBuilder = (name, price, id, qty, imgsrc) => {
   let buttonLinks = $(`.hidden_button_links`);
   let trashLink = buttonLinks.find('#button_remove_svg').text();
   let plusLink = buttonLinks.find('#button_plus_svg').text();

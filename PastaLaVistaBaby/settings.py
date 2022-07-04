@@ -87,12 +87,12 @@ WSGI_APPLICATION = 'PastaLaVistaBaby.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': MYSQL_DBNAME,
-        'USER': MYSQL_USER,
-        'PASSWORD': MYSQL_PASSWORD,
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'deav5rnco301b0',
+        'USER': 'glbflewxrhoqtg',
+        'PASSWORD': '3206c697e0bed7e19766f6e7bd77e2b41f01baac61aef5da5c9e40dec4202074',
+        'HOST': 'ec2-52-49-120-150.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -100,8 +100,9 @@ if not DEBUG:
     import dj_database_url
     DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
 else:
-    import pymysql
-    pymysql.install_as_MySQLdb()
+    if DATABASES['default']["ENGINE"].endswith('mysql'):
+        import pymysql
+        pymysql.install_as_MySQLdb()
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
