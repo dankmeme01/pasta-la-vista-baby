@@ -1818,6 +1818,7 @@
   }
 
   .cart__item_image{
+    display: none;
 
   }
 
@@ -1884,6 +1885,16 @@
 .cart__item_modifiers > *:not(:last-child){
   margin-right: 7px;
 }
+
+
+.cart__hr {
+  background: #ffffffc3;
+  border-radius: 6px;
+  width: 100%;
+  height: 3px;
+  margin: 40px 0px;
+}
+
 
 
 
