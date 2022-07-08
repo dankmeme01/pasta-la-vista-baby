@@ -2051,3 +2051,30 @@
 .swal2-html-container {
   color: #FFF !important;
 }
+
+input::-webkit-calendar-picker-indicator {
+  opacity:0;
+}
+
+input {
+  position:relative;
+}
+
+input:before {
+  content: "\f133";
+  color: rgba(255, 255, 255, 0.678);
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position:absolute;
+  right: 3%;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+  background-color: rgba(0,0,0,.5) !important;
+}

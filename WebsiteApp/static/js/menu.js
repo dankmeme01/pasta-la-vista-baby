@@ -30,7 +30,7 @@ let menuItemClicked = (id) => {
   Swal.fire({
     position: 'center',
     icon: 'success',
-    title: 'Added to cart',
+    title: 'Додано до кошика',
     showConfirmButton: false,
     timer: 1000,
     toast: true

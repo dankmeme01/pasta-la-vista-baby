@@ -57,7 +57,7 @@ class OrderForm(ModelForm):
     class Meta:
         model = OrderModel
         fields = ['full_name', 'phone_number', 'delivery_type',
-                  'delivery_address', 'payment_type', 'amount_of_tools', 'comment']
+                 'delivery_address', 'payment_type', 'amount_of_tools', 'comment']
 
 class ReservationForm(ModelForm):
     class Meta:

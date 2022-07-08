@@ -332,7 +332,8 @@ let runHooks = () => {
 document.addEventListener("DOMContentLoaded", runHooks);
 
 
-let submitReservation = () => {
+let submitReservation = (url, formdata) => {
+  console.log(formdata)
   Swal.fire({
     title: 'Точно?',
     icon: 'question',
@@ -345,9 +346,9 @@ let submitReservation = () => {
   }).then((result) => {
     if (result.isConfirmed) {
       $.ajax({
-        url: $("#reservation-form").attr("action"),
-        type: $("#reservation-form").attr("method"),
-        data: $("#reservation-form").serialize(),
+        url: url,
+        type: "POST",
+        data: formdata,
         success: (result) => {
           Swal.fire({
             title: 'Успiх!',
@@ -367,4 +368,34 @@ let submitReservation = () => {
       });
     }
   })
+}
+
+let openReservation = () => {
+  Swal.fire({
+    title: 'Резервування',
+    html: `
+          <p class="form__reservation__text">Ваше ім’я*</p>
+          <input class="form__reservation__input" type="text" id="full_name" name="full_name" placeholder="Введіть ваше ім’я">
+
+          <p class="form__reservation__text">Телефон*</p>
+          <input class="form__reservation__input" type="tel" name="phone_number"
+          pattern="+380[0-9]{3}-[0-9]{3}" placeholder="Введіть ваш телефон" id="phone_number">
+
+          <p class="form__reservation__text">Дата/Час*</p>
+          <input class="form__reservation__date" type="datetime-local" name="reserved_for" id="reserve_date">
+    ` + $("#hidden-csrf-box").html(),
+    focusConfirm: false,
+    showCancelButton: true,
+    cancelButtonText: 'Скасувати',
+    confirmButtonText: 'Зарезервувати',
+    cancelButtonColor: '#d33',
+    preConfirm: () => {
+      return [document.getElementById('full_name').value, document.getElementById('phone_number').value, document.getElementById('reserve_date').value, $("input[name='csrfmiddlewaretoken']").val()];
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      let url = $("#hidden-reservation-url").text();
+      submitReservation(url, { 'full_name': result.value[0], 'phone_number': result.value[1], 'reserved_for': result.value[2], 'csrfmiddlewaretoken': result.value[3] });
+    }
+  });
 }
