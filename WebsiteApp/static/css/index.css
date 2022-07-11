@@ -2078,3 +2078,7 @@ input:before {
 .swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
   background-color: rgba(0,0,0,.5) !important;
 }
+
+.popup__cart__empty__text {
+  margin-bottom: 50px;
+}

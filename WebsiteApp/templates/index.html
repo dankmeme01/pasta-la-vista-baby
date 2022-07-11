@@ -4,8 +4,9 @@
 {% block title %}Main page{% endblock %}
 
 {% block scripts %}
-<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="{% static 'css/slider.css' %}">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'js/index.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -79,7 +80,7 @@
         <div class="item-format__text">Замовити доставку можна через додатки Mister.Am та Glovo.</div>
 
         <div class="item-format__button block-button block-button_small02">
-          <a href="{% url 'menu' %}">Перейти в меню</a>
+          <a href="javascript:void(0);" onclick="javascript:deliveryPopup()">Великий</a>
         </div>
       </div>
 
