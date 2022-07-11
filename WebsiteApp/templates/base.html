@@ -47,6 +47,8 @@
   <script src="{% static 'js/base.js' %}"></script>
   {% block scripts %}{% endblock %}
 
+  <!-- Hidden urls to stuff inaccessible in JS -->
+
   <div class="hidden_button_links" style="display: none;">
     <p id="button_remove_svg">{% static 'images/cart/close.svg' %}</p>
     <p id="button_plus_svg">{% static 'images/cart/plus.svg' %}</p>
@@ -58,6 +60,9 @@
   <div id="hidden-csrf-box" style="display: none;">
     {% csrf_token %}
   </div>
+
+  <div id="hidden-img-del1" style="display: none;">{% static 'images/format/Glovo_Logo.png' %}</div>
+  <div id="hidden-img-del2" style="display: none;">{% static 'images/format/Mister.Am_Logo.png' %}</div>
 
 </body>
 </html>
