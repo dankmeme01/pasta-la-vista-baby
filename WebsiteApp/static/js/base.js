@@ -374,6 +374,7 @@ let openReservation = () => {
   Swal.fire({
     title: 'Резервування',
     html: `
+
           <p class="form__reservation__text">Ваше ім’я*</p>
           <input class="form__reservation__input" type="text" id="full_name" name="full_name" placeholder="Введіть ваше ім’я">
 
@@ -383,12 +384,14 @@ let openReservation = () => {
 
           <p class="form__reservation__text">Дата/Час*</p>
           <input class="form__reservation__date" type="datetime-local" name="reserved_for" id="reserve_date">
+
     ` + $("#hidden-csrf-box").html(),
     focusConfirm: false,
     showCancelButton: true,
     cancelButtonText: 'Скасувати',
     confirmButtonText: 'Зарезервувати',
     cancelButtonColor: '#d33',
+    customClass: 'reservationPopup',
     preConfirm: () => {
       return [document.getElementById('full_name').value, document.getElementById('phone_number').value, document.getElementById('reserve_date').value, $("input[name='csrfmiddlewaretoken']").val()];
     }
